@@ -368,6 +368,12 @@
 <!-- ChartJS -->
 <script src="{{ asset('AdminLTE') }}/plugins/chart.js/Chart.min.js"></script>
 <script src="https://kit.fontawesome.com/a2d9934ef9.js" crossorigin="anonymous"></script>
+<!-- FLOT CHARTS -->
+<script src="{{ asset('AdminLTE') }}/plugins/flot/jquery.flot.js"></script>
+<!-- FLOT RESIZE PLUGIN - allows the chart to redraw when the window is resized -->
+<script src="{{ asset('AdminLTE') }}/plugins/flot/plugins/jquery.flot.resize.js"></script>
+<!-- FLOT PIE PLUGIN - also used to draw donut charts -->
+<script src="{{ asset('AdminLTE') }}/plugins/flot/plugins/jquery.flot.pie.js"></script>
 
 </body>
 </html>
