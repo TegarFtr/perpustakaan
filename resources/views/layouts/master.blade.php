@@ -20,7 +20,7 @@
 
   <!-- Preloader -->
   <div class="preloader flex-column justify-content-center align-items-center">
-    <img class="animation__wobble" src="{{ asset('AdminLTE') }}/dist/img/AdminLTELogo.png" alt="AdminLTELogo" height="60" width="60">
+    <img class="animation__wobble" src="{{ asset('AdminLTE') }}/dist/img/tutwuri.png" alt="TutWuriHandayani" height="100" width="100">
   </div>
 
   <!-- Navbar -->
@@ -164,9 +164,9 @@
   <!-- Main Sidebar Container -->
   <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <!-- Brand Logo -->
-    <a href="index3.html" class="brand-link text-center text-bold">
-      {{-- <img src="{{ asset('AdminLTE') }}/dist/img/AdminLTELogo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8"> --}}
-      <span class="brand-text font-weight-light">SIMPUS</span>
+    <a href="{{ url('/admin') }}" class="brand-link text-center text-bold">
+      <img src="{{ asset('AdminLTE') }}/dist/img/tutwuri.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
+      <span class="brand-text font-weight-bold">PERPUSTAKAAN</span>
     </a>
 
     <!-- Sidebar -->
@@ -186,9 +186,9 @@
         <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
           <!-- Add icons to the links using the .nav-icon class
               with font-awesome or any other icon font library -->
-          <li class="nav-header">MAIN MENU</li>
+          <li class="nav-header bg-dark">MAIN MENU</li>
           <li class="nav-item">
-            <a href="#" class="nav-link active">
+            <a href="{{ url('/admin') }}" class="nav-link @yield('activeDashboard')">
               <i class="nav-icon fas fa-home"></i>
               <p>
                 Dashboard
@@ -197,8 +197,8 @@
             </a>
           </li>
 
-          <li class="nav-item">
-            <a href="#" class="nav-link">
+          <li class="nav-item @yield('menuMaster')">
+            <a href="#" class="nav-link @yield('activeMaster')">
               <i class="nav-icon fas fa-folder"></i>
               <p>
                 Master Data
@@ -207,28 +207,22 @@
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="pages/layout/top-nav.html" class="nav-link">
+                <a href="{{ url('/admin/anggota') }}" class="nav-link @yield('activeAnggota')">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Data Anggota</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="pages/layout/fixed-sidebar.html" class="nav-link">
+                <a href="{{ url('/admin/peminjaman') }}" class="nav-link @yield('activePinjaman')">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Data Peminjaman</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="pages/layout/boxed.html" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Administrator</p>
                 </a>
               </li>
             </ul>
           </li>
 
-          <li class="nav-item">
-            <a href="#" class="nav-link">
+          <li class="nav-item @yield('menuKatalog')">
+            <a href="#" class="nav-link @yield('activeKatalog')">
               <i class="nav-icon fas fa-book"></i>
               <p>
                 Katalog Buku
@@ -237,19 +231,19 @@
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="pages/charts/chartjs.html" class="nav-link">
+                <a href="{{ url('/admin/data-buku') }}" class="nav-link @yield('activeDataBuku')">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Data Buku</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="pages/charts/flot.html" class="nav-link">
+                <a href="{{ url('/admin/kategori-buku') }}" class="nav-link @yield('activeKategoriBuku')">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Kategori Buku</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="pages/charts/inline.html" class="nav-link">
+                <a href="{{ url('/admin/penerbit') }}" class="nav-link @yield('activePenerbit')">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Data Penerbit</p>
                 </a>
@@ -258,7 +252,7 @@
           </li>
 
           <li class="nav-item">
-            <a href="#" class="nav-link">
+            <a href="{{ url('/admin/laporan') }}" class="nav-link @yield('activeLaporan')">
               <i class="nav-icon fas fa-book"></i>
               <p>
                 Laporan Perpustakaan
@@ -267,9 +261,9 @@
             </a>
           </li>
 
-          <li class="nav-header">EXAMPLES</li>
+          <li class="nav-header">MENU USER</li>
           <li class="nav-item">
-            <a href="pages/calendar.html" class="nav-link">
+            <a href="{{ url('/admin/pinjam') }}" class="nav-link @yield('activePinjam')">
               <i class="nav-icon fas fa-file"></i>
               <p>
                 Peminjaman Buku
@@ -277,7 +271,7 @@
             </a>
           </li>
           <li class="nav-item">
-            <a href="pages/gallery.html" class="nav-link">
+            <a href="{{ url('/admin/kembali') }}" class="nav-link @yield('activeKembali')">
               <i class="nav-icon fas fa-file"></i>
               <p>
                 Pengembalian Buku
@@ -285,7 +279,7 @@
             </a>
           </li>
           <li class="nav-item">
-            <a href="pages/kanban.html" class="nav-link">
+            <a href="{{ url('/admin/list-buku') }}" class="nav-link @yield('activeListBuku')">
               <i class="nav-icon fas fa-book"></i>
               <p>
                 List Buku
@@ -295,15 +289,15 @@
 
           <li class="nav-header">MENU LAIN</li>
           <li class="nav-item">
-            <a href="iframe.html" class="nav-link">
+            <a href="{{ url('/admin/profile') }}" class="nav-link @yield('activeProfile')">
               <i class="fa-solid nav-icon fa-id-card"></i>
               <p>
-                Profil Aplikasi
+                Profile Aplikasi
               </p>
             </a>
           </li>
           <li class="nav-item">
-            <a href="https://adminlte.io/docs/3.1/" class="nav-link">
+            <a href="{{ url('/admin/administrator') }}" class="nav-link @yield('activeAdmin')">
               <i class="nav-icon fas fa-user"></i>
               <p>
                 Administrator
