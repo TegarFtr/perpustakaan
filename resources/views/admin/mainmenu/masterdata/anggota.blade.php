@@ -54,7 +54,7 @@
                         <div class="modal-dialog">
                         <div class="modal-content">
                             <div class="modal-header">
-                                <h1 class="modal-title fs-5" id="staticBackdropLabel">Form Data Mahasiswa</h1>
+                                <h1 class="modal-title fs-5" id="staticBackdropLabel">Edit Data Anggota</h1>
                             </div>
                             <form action="#" method="post">
                                 @csrf
@@ -132,7 +132,7 @@
                         <div class="modal-dialog">
                         <div class="modal-content">
                             <div class="modal-header">
-                                <h1 class="modal-title fs-5" id="staticBackdropLabel">Form Data Mahasiswa</h1>
+                                <h1 class="modal-title fs-5" id="staticBackdropLabel">Form Data Anggota</h1>
                             </div>
                             <form action="#" method="post">
                                 @csrf
