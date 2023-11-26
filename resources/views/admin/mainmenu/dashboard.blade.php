@@ -35,7 +35,7 @@
                         <div class="icon">
                         <i class="fa-solid fa-users"></i>
                         </div>
-                        <a href="#" class="small-box-footer">
+                        <a href="{{ url('/admin/anggota') }}" class="small-box-footer">
                         More info <i class="fas fa-arrow-circle-right"></i>
                         </a>
                     </div>
@@ -52,7 +52,7 @@
                         <div class="icon">
                         <i class="fa-solid fa-book-open"></i>
                         </div>
-                        <a href="#" class="small-box-footer">
+                        <a href="{{ url('/admin/data-buku') }}" class="small-box-footer">
                         More info <i class="fas fa-arrow-circle-right"></i>
                         </a>
                     </div>
@@ -73,7 +73,7 @@
                         <div class="icon">
                         <i class="fa-solid fa-right-from-bracket"></i>
                         </div>
-                        <a href="#" class="small-box-footer" >
+                        <a href="{{ url('/admin/pinjam') }}" class="small-box-footer" >
                         <span style="color: white">More info</span> <i class="fas fa-arrow-circle-right" style="color: white"></i>
                         </a>
                     </div>
@@ -90,7 +90,7 @@
                         <div class="icon">
                         <i class="fa-solid fa-right-to-bracket"></i>
                         </div>
-                        <a href="#" class="small-box-footer">
+                        <a href="{{ url('/admin/kembali') }}" class="small-box-footer">
                         More info <i class="fas fa-arrow-circle-right"></i>
                         </a>
                     </div>
