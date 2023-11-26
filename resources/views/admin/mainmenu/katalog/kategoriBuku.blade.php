@@ -4,7 +4,13 @@
 @section('activeKategoriBuku', 'active') 
 
 @section('content')
-<h1 class="m-3">Menu Kategori Buku</h1> 
+<div class="d-flex justify-content-between">
+    <h1 class="m-3">Menu Kategori Buku</h1> 
+    <div class="mr-5 mt-4">
+        <a href="#" class="btn btn-primary">Tambah Kategori Buku</a>
+    </div>
+</div>
+
 <div class="m-4">
     <table class="table table-bordered">
         <thead>
@@ -25,7 +31,5 @@
             </tr>
         </tbody>
     </table>
-
-    <a href="#" class="btn btn-primary">Tambah Kategori Buku</a> 
 </div>
 @endsection
