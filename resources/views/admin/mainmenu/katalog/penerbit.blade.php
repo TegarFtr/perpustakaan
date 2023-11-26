@@ -4,7 +4,13 @@
 @section('activePenerbit', 'active')
 
 @section('content')
-<h1 class="m-3">Menu Penerbit</h1>
+<div class="d-flex justify-content-between">
+    <h1 class="m-3">Menu Penerbit</h1> 
+    <div class="mr-5 mt-4">
+        <a href="#" class="btn btn-primary">Tambah Penerbit</a>
+    </div>
+</div>
+
 <div class="m-4">
     <table class="table table-bordered">
         <thead>
@@ -26,6 +32,5 @@
         </tbody>
     </table>
 
-    <a href="#" class="btn btn-primary">Tambah Penerbit</a>
 </div>
 @endsection
