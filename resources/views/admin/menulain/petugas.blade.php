@@ -1,12 +1,10 @@
 @extends('layouts.master')
-@section('menuMaster', 'menu-open')
-@section('activeMaster', 'active')
-@section('activePinjaman', 'active')
+@section('activeAdmin', 'active')
 
 @section('content')
     <section class="content-header">
         <h1 style="font-family: 'Quicksand', sans-serif; font-weight: bold;">
-            Data Peminjaman
+            Data Petugas
             <small>
                 <script type='text/javascript'>
                     var months = ['Januari', 'Februari', 'Maret', 'April', 'Mei', 'Juni', 'Juli', 'Agustus', 'September', 'Oktober', 'November', 'Desember'];
@@ -29,7 +27,7 @@
           <div class="col-12">
             <div class="card mt-2">
               <div class="card-header">
-                <h3 class="card-title">Data Peminjaman Perpustakaan</h3>
+                <h3 class="card-title">Data Petugas Perpustakaan</h3>
                 <div class="card-tools">
                   <div class="input-group input-group-sm" style="width: 150px;">
                     <input type="text" name="table_search" class="form-control float-right" placeholder="Search">
@@ -48,24 +46,20 @@
                   <thead>
                     <tr>
                         <th>NO</th>
-                        <th>Nama Peminjam</th>
-                        <th>Juduk Buku</th>
-                        <th>Tanggal Peminjaman</th>
-                        <th>Tanggal Pengembalian</th>
-                        <th>Denda</th>
-                        <th>Status</th>
+                        <th>ID Petugas</th>
+                        <th>Nama</th>
+                        <th>Username</th>
+                        <th>Password</th>
                         <th class="text-center">Aksi</th>
                     </tr>
                   </thead>
                   <tbody>
                     <tr>
                         <td>1</td>
+                        <td>183</td>
                         <td>John Doe</td>
-                        <td>Berrrr</td>
-                        <td>11/26/2023</td>
-                        <td>11/29/2023</td>
-                        <td>0</td>
-                        <td>Dipinjam</td>
+                        <td>admin</td>
+                        <td>admin</td>
                         <td class="text-center">
                             <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#modalEdit"><i class="fa-solid fa-pen-to-square"></i></button>
                             <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#modalHapus"><i class="fa-solid fa-trash"></i></button>
@@ -77,39 +71,27 @@
                         <div class="modal-dialog">
                         <div class="modal-content">
                             <div class="modal-header">
-                                <h1 class="modal-title fs-5" id="staticBackdropLabel">Edit Data Peminjaman</h1>
+                                <h1 class="modal-title fs-5" id="staticBackdropLabel">Edit Data Anggota</h1>
                             </div>
                             <form action="#" method="post">
                                 @csrf
                                 @method('PUT')
                                 <div class="modal-body">
                                     <div class="mb-3">
-                                        <label for="nama" class="form-label">Nama peminjam</label>
-                                        <input type="text" class="form-control" id="nama" name="nama" value="John Doe" placeholder="Masukkan Nama Peminjam" />
+                                        <label for="nis" class="form-label">ID Petugas</label>
+                                        <input type="text" class="form-control" id="nis" name="nis" value="183" placeholder="Masukkan ID Petugas" />
                                     </div>
                                     <div class="mb-3">
-                                        <label for="judul" class="form-label">Judul Buku</label>
-                                        <input type="text" class="form-control" id="judul" name="judul" value="Berrrr" placeholder="Masukkan NIM" />
+                                        <label for="nama" class="form-label">Nama</label>
+                                        <input type="text" class="form-control" id="nama" name="nama" value="John Doe" placeholder="Masukkan Nama" />
                                     </div>
                                     <div class="mb-3">
-                                        <label for="tanggalpinjam" class="form-label">Tanggal Pinjam</label>
-                                        <input type="date"  class="form-control" id="tanggalpinjam" name="tanggalpinjam" value="{{date('Y-m-d')}}" disabled/>
+                                        <label for="username" class="form-label">Username</label>
+                                        <input type="text"  class="form-control" id="username" name="username" value="admin" placeholder="Masukkan Username"/>
                                     </div>
                                     <div class="mb-3">
-                                        <label for="tanggalkembali" class="form-label">Tanggal Pengembalian</label>
-                                        <input type="date"  class="form-control" id="tanggalkembali" name="tanggalkembali" value="{{date('Y-m-d', strtotime('+7 day'))}}" disabled/>
-                                    </div>
-                                    <div class="mb-3">
-                                        <label for="denda" class="form-label">Denda</label>
-                                        <input type="text"  class="form-control" id="denda" name="denda" value="0" disabled"/>
-                                    </div>
-                                    <div class="mb-3">
-                                        <label for="status" class="form-label">Status</label>
-                                        <select name="status" id="status" class="form-control">
-                                            <option value="dipinjam">Dipinjam</option>
-                                            <option value="dikembalikan">Dikembalikan</option>
-                                            <option value="terlambat">Terlambat</option>
-                                        </select>
+                                        <label for="password" class="form-label">Password</label>
+                                        <input type="text"  class="form-control" id="password" name="password" value="admin" placeholder="Masukkan Password"/>
                                     </div>
                                 </div>
                                 <div class="modal-footer">
@@ -133,7 +115,7 @@
                             </div>
                             <div class="modal-body">
                                 <h5 class="text-center">Apakah anda yakin akan menghapus data ini? <br>
-                                    <span class="text-danger">John Doe - Berrrr</span>
+                                    <span class="text-danger">John Doe - 183</span>
                                 </h5>
                             </div>
                             <div class="modal-footer">
@@ -156,41 +138,37 @@
 
               </div>
               <!-- /.card-body -->
-                <div class="card-footer text-right">
-                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modal-default">
+              <div class="card-footer text-right">
+                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modalTambah">
                         <i class="fa-solid fa-user-plus"></i>
                         Tambah Data
                     </button>
                 </div>
 
-                <div class="modal fade" id="modal-default">
+                <div class="modal fade" id="modalTambah">
                         <div class="modal-dialog">
                         <div class="modal-content">
                             <div class="modal-header">
-                                <h1 class="modal-title fs-5" id="staticBackdropLabel">Form Data Peminjaman</h1>
+                                <h1 class="modal-title fs-5" id="staticBackdropLabel">Form Data Petugas</h1>
                             </div>
                             <form action="#" method="post">
                                 @csrf
                                 <div class="modal-body">
                                     <div class="mb-3">
-                                        <label for="namapeminjam" class="form-label">Nama Peminjam</label>
-                                        <input type="text" class="form-control" id="namapeminjam" name="namapeminjam" placeholder="Masukkan Nama Peminjam" />
+                                        <label for="nis" class="form-label">ID Petugas</label>
+                                        <input type="text" class="form-control" id="nis" name="nis" placeholder="Masukkan ID Petugas" />
                                     </div>
                                     <div class="mb-3">
-                                        <label for="judulbuku" class="form-label">Judul Buku</label>
-                                        <input type="text" class="form-control" id="judulbuku" name="judulbuku" placeholder="Masukkan NIM" />
+                                        <label for="nama" class="form-label">Nama</label>
+                                        <input type="text" class="form-control" id="nama" name="nama" placeholder="Masukkan Nama" />
                                     </div>
                                     <div class="mb-3">
-                                        <label for="tanggalpinjam" class="form-label">Tanggal Pinjam</label>
-                                        <input type="date"  class="form-control" id="tanggalpinjam" name="tanggalpinjam" value="{{date('Y-m-d')}}" disabled/>
+                                        <label for="username" class="form-label">Username</label>
+                                        <input type="text"  class="form-control" id="username" name="username" placeholder="Masukkan Username"/>
                                     </div>
                                     <div class="mb-3">
-                                        <label for="tanggalkembali" class="form-label">Tanggal Pengembalian</label>
-                                        <input type="date"  class="form-control" id="tanggalkembali" name="tanggalkembali" value="{{date('Y-m-d', strtotime('+7 day'))}}" disabled/>
-                                    </div>
-                                    <div class="mb-3">
-                                        <label for="denda" class="form-label">Denda</label>
-                                        <input type="text"  class="form-control" id="denda" name="denda" value="0" disabled/>
+                                        <label for="password" class="form-label">Password</label>
+                                        <input type="text"  class="form-control" id="password" name="password" placeholder="Masukkan Password"/>
                                     </div>
                                 </div>
                                 <div class="modal-footer">

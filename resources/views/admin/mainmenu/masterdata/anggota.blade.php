@@ -5,6 +5,26 @@
 
 
 @section('content')
+    <section class="content-header">
+        <h1 style="font-family: 'Quicksand', sans-serif; font-weight: bold;">
+            Data Anggota
+            <small>
+                <script type='text/javascript'>
+                    var months = ['Januari', 'Februari', 'Maret', 'April', 'Mei', 'Juni', 'Juli', 'Agustus', 'September', 'Oktober', 'November', 'Desember'];
+                    var myDays = ['Minggu', 'Senin', 'Selasa', 'Rabu', 'Kamis', 'Jum&#39;at', 'Sabtu'];
+                    var date = new Date();
+                    var day = date.getDate();
+                    var month = date.getMonth();
+                    var thisDay = date.getDay(),
+                        thisDay = myDays[thisDay];
+                    var yy = date.getYear();
+                    var year = (yy < 1000) ? yy + 1900 : yy;
+                    document.write(thisDay + ', ' + day + ' ' + months[month] + ' ' + year);
+                    //
+                </script>
+            </small>
+        </h1>
+    </section>
     <div class="container-fluid ">
         <div class="row">
           <div class="col-12">
@@ -24,7 +44,7 @@
                 </div>
               </div>
               <!-- /.card-header -->
-              <div class="card-body table-responsive p-0" style="height: 680px;">
+              <div class="card-body table-responsive p-0" style="height: 620px;">
                 <table class="table table-head-fixed text-nowrap">
                   <thead>
                     <tr>
@@ -62,11 +82,11 @@
                                 <div class="modal-body">
                                     <div class="mb-3">
                                         <label for="nis" class="form-label">NIS</label>
-                                        <input type="text" class="form-control" id="nis" name="nis" value="183" placeholder="Masukkan Nama Peminjam" />
+                                        <input type="text" class="form-control" id="nis" name="nis" value="183" placeholder="Masukkan NIS" />
                                     </div>
                                     <div class="mb-3">
                                         <label for="nama" class="form-label">Nama</label>
-                                        <input type="text" class="form-control" id="nama" name="nama" value="John Doe" placeholder="Masukkan NIM" />
+                                        <input type="text" class="form-control" id="nama" name="nama" value="John Doe" placeholder="Masukkan Nama" />
                                     </div>
                                     <div class="mb-3">
                                         <label for="username" class="form-label">Username</label>
@@ -139,11 +159,11 @@
                                 <div class="modal-body">
                                     <div class="mb-3">
                                         <label for="nis" class="form-label">NIS</label>
-                                        <input type="text" class="form-control" id="nis" name="nis" placeholder="Masukkan Nama Peminjam" />
+                                        <input type="text" class="form-control" id="nis" name="nis" placeholder="Masukkan NIS" />
                                     </div>
                                     <div class="mb-3">
                                         <label for="nama" class="form-label">Nama</label>
-                                        <input type="text" class="form-control" id="nama" name="nama" placeholder="Masukkan NIM" />
+                                        <input type="text" class="form-control" id="nama" name="nama" placeholder="Masukkan Nama" />
                                     </div>
                                     <div class="mb-3">
                                         <label for="username" class="form-label">Username</label>

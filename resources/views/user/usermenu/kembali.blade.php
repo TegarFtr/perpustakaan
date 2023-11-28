@@ -1,4 +1,4 @@
-@extends('layouts.master')
+@extends('layouts.masteruser')
 @section('activeKembali', 'active')
 
 @section('content')

@@ -4,6 +4,26 @@
 @section('activeDataBuku', 'active')
 
 @section('content')
+    <section class="content-header">
+        <h1 style="font-family: 'Quicksand', sans-serif; font-weight: bold;">
+            Data Buku
+            <small>
+                <script type='text/javascript'>
+                    var months = ['Januari', 'Februari', 'Maret', 'April', 'Mei', 'Juni', 'Juli', 'Agustus', 'September', 'Oktober', 'November', 'Desember'];
+                    var myDays = ['Minggu', 'Senin', 'Selasa', 'Rabu', 'Kamis', 'Jum&#39;at', 'Sabtu'];
+                    var date = new Date();
+                    var day = date.getDate();
+                    var month = date.getMonth();
+                    var thisDay = date.getDay(),
+                        thisDay = myDays[thisDay];
+                    var yy = date.getYear();
+                    var year = (yy < 1000) ? yy + 1900 : yy;
+                    document.write(thisDay + ', ' + day + ' ' + months[month] + ' ' + year);
+                    //
+                </script>
+            </small>
+        </h1>
+    </section>
     <div class="container-fluid ">
         <div class="row">
             <div class="col-12">
@@ -22,7 +42,7 @@
                         </div>
                     </div>
                     <!-- /.card-header -->
-                    <div class="card-body table-responsive p-0" style="height: 680px;">
+                    <div class="card-body table-responsive p-0" style="height: 620px;">
                         <table class="table table-bordered">
                             <thead>
                                 <tr>
@@ -32,6 +52,7 @@
                                     <th>Kategori</th>
                                     <th>Penerbit</th>
                                     <th>Sampul</th>
+                                    <th>Stock</th>
                                     <th class="text-center">Aksi</th>
                                 </tr>
                             </thead>
@@ -45,6 +66,7 @@
                                     <td>
                                         <img src="path_to_image.jpg" alt="Cover Buku" style="max-width: 100px;">
                                     </td>
+                                    <td>30</td>
                                     <td class="text-center">
                                         <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#modalEdit"><i class="fa-solid fa-pen-to-square"></i></button>
                                         <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#modalHapus"><i class="fa-solid fa-trash"></i></button>
@@ -77,6 +99,10 @@
                                                 <div class="mb-3">
                                                     <label for="password" class="form-label">Sampul</label>
                                                     <input type="file"  class="form-control" id="password" name="password" value="" placeholder=""/>
+                                                </div>
+                                                <div class="mb-3">
+                                                    <label for="stock" class="form-label">Stock</label>
+                                                    <input type="number"  class="form-control" id="stock" name="stock" value="30" placeholder="Masukkan Stock Buku"/>
                                                 </div>
                                             </div>
                                             <div class="modal-footer">
@@ -152,6 +178,10 @@
                                     <div class="mb-3">
                                         <label for="sampul" class="form-label">Sampul</label>
                                         <input type="file"  class="form-control" id="sampul" name="sampul"/>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="stock" class="form-label">Stock</label>
+                                        <input type="number"  class="form-control" id="stock" name="stock" value="" placeholder="Masukkan Stock Buku"/>
                                     </div>
                                 </div>
                                 <div class="modal-footer">

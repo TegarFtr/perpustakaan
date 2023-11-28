@@ -177,7 +177,7 @@
           <img src="{{ asset('AdminLTE') }}/dist/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
         </div>
         <div class="info">
-          <a href="#" class="d-block">Admin</a>
+          <a href="#" class="d-block">Petugas</a>
         </div>
       </div>
 
@@ -188,7 +188,7 @@
               with font-awesome or any other icon font library -->
           <li class="nav-header bg-dark">MAIN MENU</li>
           <li class="nav-item">
-            <a href="{{ url('/admin') }}" class="nav-link @yield('activeDashboard')">
+            <a href="{{ url('/petugas') }}" class="nav-link @yield('activeDashboard')">
               <i class="nav-icon fas fa-home"></i>
               <p>
                 Dashboard
@@ -207,13 +207,13 @@
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="{{ url('/admin/anggota') }}" class="nav-link @yield('activeAnggota')">
+                <a href="{{ url('/petugas/anggota') }}" class="nav-link @yield('activeAnggota')">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Data Anggota</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="{{ url('/admin/peminjaman') }}" class="nav-link @yield('activePinjaman')">
+                <a href="{{ url('/petugas/peminjaman') }}" class="nav-link @yield('activePinjaman')">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Data Peminjaman</p>
                 </a>
@@ -231,19 +231,19 @@
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="{{ url('/admin/data-buku') }}" class="nav-link @yield('activeDataBuku')">
+                <a href="{{ url('/petugas/data-buku') }}" class="nav-link @yield('activeDataBuku')">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Data Buku</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="{{ url('/admin/kategori-buku') }}" class="nav-link @yield('activeKategoriBuku')">
+                <a href="{{ url('/petugas/kategori-buku') }}" class="nav-link @yield('activeKategoriBuku')">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Kategori Buku</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="{{ url('/admin/penerbit') }}" class="nav-link @yield('activePenerbit')">
+                <a href="{{ url('/petugas/penerbit') }}" class="nav-link @yield('activePenerbit')">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Data Penerbit</p>
                 </a>
@@ -252,55 +252,11 @@
           </li>
 
           <li class="nav-item">
-            <a href="{{ url('/admin/laporan') }}" class="nav-link @yield('activeLaporan')">
+            <a href="{{ url('/petugas/laporan') }}" class="nav-link @yield('activeLaporan')">
               <i class="nav-icon fas fa-book"></i>
               <p>
                 Laporan Perpustakaan
                 <i class="right fas "></i>
-              </p>
-            </a>
-          </li>
-
-          <li class="nav-header">MENU USER</li>
-          <li class="nav-item">
-            <a href="{{ url('/admin/pinjam') }}" class="nav-link @yield('activePinjam')">
-              <i class="nav-icon fas fa-file"></i>
-              <p>
-                Peminjaman Buku
-              </p>
-            </a>
-          </li>
-          <li class="nav-item">
-            <a href="{{ url('/admin/kembali') }}" class="nav-link @yield('activeKembali')">
-              <i class="nav-icon fas fa-file"></i>
-              <p>
-                Pengembalian Buku
-              </p>
-            </a>
-          </li>
-          <li class="nav-item">
-            <a href="{{ url('/admin/list-buku') }}" class="nav-link @yield('activeListBuku')">
-              <i class="nav-icon fas fa-book"></i>
-              <p>
-                List Buku
-              </p>
-            </a>
-          </li>
-
-          <li class="nav-header">MENU LAIN</li>
-          <li class="nav-item">
-            <a href="{{ url('/admin/profile') }}" class="nav-link @yield('activeProfile')">
-              <i class="fa-solid nav-icon fa-id-card"></i>
-              <p>
-                Profile Aplikasi
-              </p>
-            </a>
-          </li>
-          <li class="nav-item">
-            <a href="{{ url('/admin/petugas') }}" class="nav-link @yield('activeAdmin')">
-              <i class="nav-icon fas fa-user"></i>
-              <p>
-                Petugas
               </p>
             </a>
           </li>

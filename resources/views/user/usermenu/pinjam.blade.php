@@ -1,10 +1,10 @@
-@extends('layouts.master')
-@section('activeKembali', 'active')
+@extends('layouts.masteruser')
+@section('activePinjam', 'active')
 
 @section('content')
     <section class="content-header">
         <h1 style="font-family: 'Quicksand', sans-serif; font-weight: bold;">
-            Menu Pengembalian Buku
+            Menu Peminjaman Buku
             <small>
                 <script type='text/javascript'>
                     var months = ['Januari', 'Februari', 'Maret', 'April', 'Mei', 'Juni', 'Juli', 'Agustus', 'September', 'Oktober', 'November', 'Desember'];
@@ -29,10 +29,10 @@
               <div class="card-header p-0 border-bottom-0">
                 <ul class="nav nav-tabs" id="custom-tabs-four-tab" role="tablist">
                   <li class="nav-item">
-                    <a class="nav-link active" id="custom-tabs-four-home-tab" data-toggle="pill" href="#custom-tabs-four-home" role="tab" aria-controls="custom-tabs-four-home" aria-selected="true">Form Pengembalian Buku</a>
+                    <a class="nav-link active" id="custom-tabs-four-home-tab" data-toggle="pill" href="#custom-tabs-four-home" role="tab" aria-controls="custom-tabs-four-home" aria-selected="true">Form Peminjaman Buku</a>
                   </li>
                   <li class="nav-item">
-                    <a class="nav-link" id="custom-tabs-four-profile-tab" data-toggle="pill" href="#custom-tabs-four-profile" role="tab" aria-controls="custom-tabs-four-profile" aria-selected="false">Riwayat Pengembalian Buku</a>
+                    <a class="nav-link" id="custom-tabs-four-profile-tab" data-toggle="pill" href="#custom-tabs-four-profile" role="tab" aria-controls="custom-tabs-four-profile" aria-selected="false">Riwayat Peminjaman Buku</a>
                   </li>
                 </ul>
               </div>
@@ -43,16 +43,20 @@
                                 @csrf
                                 <div class="modal-body">
                                     <div class="mb-3">
+                                        <label for="peminjam" class="form-label">Nama Peminjam</label>
+                                        <input type="text" class="form-control" id="peminjam" name="peminjam" placeholder="Masukkan Nama Peminjam" />
+                                    </div>
+                                    <div class="mb-3">
                                         <label for="judulbuku" class="form-label">Judul Buku</label>
                                         <input type="text" class="form-control" id="judulbuku" name="judulbuku" placeholder="Masukkan Judul Buku" />
                                     </div>
                                     <div class="mb-3">
-                                        <label for="tanggalpinjam" class="form-label">Tanggal Pengembalian</label>
+                                        <label for="tanggalpinjam" class="form-label">Tanggal Peminjaman</label>
                                         <input type="date"  class="form-control" id="tanggalpinjam" name="tanggalpinjam" value="{{date('Y-m-d')}}" disabled/>
                                     </div>
                                     <div class="mb-3">
-                                        <label for="tanggalpinjam" class="form-label">Denda</label>
-                                        <input type="text"  class="form-control" id="tanggalpinjam" name="tanggalpinjam" value="0" disabled/>
+                                        <label for="tanggalkembali" class="form-label">Batas Peminjaman</label>
+                                        <input type="date"  class="form-control" id="tanggalkembali" name="tanggalkembali" value="{{date('Y-m-d', strtotime('+7 day'))}}" disabled/>
                                     </div>
                                 </div>
                                 <div class="modal-footer">
@@ -67,6 +71,8 @@
                                     <th>No</th>
                                     <th>Nama Peminjam</th>
                                     <th>Judul Buku</th>
+                                    <th>Tanggal Peminjaman</th>
+                                    <th>Batas Peminjaman</th>
                                     <th>Tanggal Pengembalian</th>
                                     <th>Denda</th>
                                 </tr>
@@ -77,6 +83,8 @@
                                     <td>J.K. Rowling</td>
                                     <td>Harry Potter and the Sorcerer's Stone</td>
                                     <td>{{date('Y-m-d')}}</td>
+                                    <td>{{date('Y-m-d', strtotime('+7 day'))}}</td>
+                                    <td>-</td>
                                     <td>0</td>
                             </tbody>
                         </table>

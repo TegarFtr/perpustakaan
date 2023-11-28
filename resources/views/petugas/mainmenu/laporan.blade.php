@@ -1,4 +1,4 @@
-@extends('layouts.master')
+@extends('layouts.masterpetugas')
 @section('activeLaporan', 'active')
 
 @section('content')

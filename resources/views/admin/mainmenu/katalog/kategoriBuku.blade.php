@@ -4,6 +4,26 @@
 @section('activeKategoriBuku', 'active')
 
 @section('content')
+    <section class="content-header">
+        <h1 style="font-family: 'Quicksand', sans-serif; font-weight: bold;">
+            Kategori Buku
+            <small>
+                <script type='text/javascript'>
+                    var months = ['Januari', 'Februari', 'Maret', 'April', 'Mei', 'Juni', 'Juli', 'Agustus', 'September', 'Oktober', 'November', 'Desember'];
+                    var myDays = ['Minggu', 'Senin', 'Selasa', 'Rabu', 'Kamis', 'Jum&#39;at', 'Sabtu'];
+                    var date = new Date();
+                    var day = date.getDate();
+                    var month = date.getMonth();
+                    var thisDay = date.getDay(),
+                        thisDay = myDays[thisDay];
+                    var yy = date.getYear();
+                    var year = (yy < 1000) ? yy + 1900 : yy;
+                    document.write(thisDay + ', ' + day + ' ' + months[month] + ' ' + year);
+                    //
+                </script>
+            </small>
+        </h1>
+    </section>
     <div class="container-fluid ">
         <div class="row">
             <div class="col-12">
@@ -22,7 +42,7 @@
                         </div>
                     </div>
                     <!-- /.card-header -->
-                    <div class="card-body table-responsive p-0" style="height: 680px;">
+                    <div class="card-body table-responsive p-0" style="height: 620px;">
                         <table class="table table-bordered">
                             <thead>
                                 <tr>

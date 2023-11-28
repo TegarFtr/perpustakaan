@@ -1,4 +1,4 @@
-@extends('layouts.master')
+@extends('layouts.masterpetugas')
 @section('activeDashboard', 'active')
 
 @section('content')

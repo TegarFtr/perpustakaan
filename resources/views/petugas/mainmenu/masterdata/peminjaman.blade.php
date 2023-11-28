@@ -1,4 +1,4 @@
-@extends('layouts.master')
+@extends('layouts.masterpetugas')
 @section('menuMaster', 'menu-open')
 @section('activeMaster', 'active')
 @section('activePinjaman', 'active')
