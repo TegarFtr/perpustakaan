@@ -13,7 +13,7 @@ class DataAnggotaController extends Controller
      */
     public function index()
     {
-        $data = User::get();
+        $data = User::get()->where('role', 'user');
         return view('admin.mainmenu.masterdata.anggota', compact('data'));
     }
 

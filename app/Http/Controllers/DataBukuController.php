@@ -118,9 +118,9 @@ public function update(Request $request, $id)
 
     // Validate and keep the existing image
     if ($request->hasFile('sampul')) {
-        // If a new image is uploaded, you can add validation or handle it as needed
-        // For now, we'll keep the existing image
-        unset($requestData['sampul']);
+        $fileName = time() . $request->file('sampul')->getClientOriginalName();
+        $path = $request->file('sampul')->storeAs('images', $fileName, 'public');
+        $requestData["sampul"] = '/storage/' . $path;
     } else {
         // Keep the existing image if no new image is uploaded
         $requestData['sampul'] = Buku::findOrFail($id)->sampul;
@@ -130,10 +130,11 @@ public function update(Request $request, $id)
     $requestData['stok'] = $requestData['stock'];
 
     // Update the 'image' key in $requestData, not 'images'
-    $requestData['image'] = $requestData['sampul'];
+    $requestData['image'] = isset($requestData['sampul']) ? $requestData['sampul'] : '';
 
     // Remove 'stock' from $requestData if it's not needed in the database
     unset($requestData['stock']);
+    unset($requestData['sampul']);
 
     $book = Buku::findOrFail($id);
     $book->update($requestData);

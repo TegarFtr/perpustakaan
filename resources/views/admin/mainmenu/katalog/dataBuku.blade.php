@@ -112,8 +112,10 @@
                                                     </select>
                                                 </div>
                                                 <div class="mb-3">
-                                                    <label for="password" class="form-label">Sampul</label>
-                                                    <input type="file"  class="form-control" id="password" name="sampul" value="" placeholder=""/>
+                                                    <div class="mb-3">
+                                                    <label for="sampul" class="form-label">Sampul</label>
+                                                    <input type="file"  class="form-control" id="sampul" name="sampul" accept="image/*" value="{{ $book->image }}"/>
+                                                </div>
                                                 </div>
                                                 <div class="mb-3">
                                                     <label for="stock" class="form-label">Stock</label>
