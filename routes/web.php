@@ -1,5 +1,10 @@
 <?php
 
+use App\Http\Controllers\AdminController;
+use App\Http\Controllers\DataAnggotaController;
+use App\Http\Controllers\DataBukuController;
+use App\Http\Controllers\KategoriController;
+use App\Http\Controllers\PenerbitController;
 use Illuminate\Support\Facades\Route;
 
 
@@ -8,15 +13,25 @@ Route::get('/registrasi', function () { return view('register'); });
 
 // Admin
 // Main Menu
-Route::get('/admin', function () { return view('admin.mainmenu.dashboard'); });
+Route::get('/admin', [AdminController::class, 'index'])->name('index');
 Route::get('/admin/laporan', function () { return view('admin.mainmenu.laporan'); });
 // Master Data
-Route::get('/admin/anggota', function () { return view('admin.mainmenu.masterdata.anggota'); });
+Route::get('/admin/anggota', [DataAnggotaController::class, 'dataAnggota'])->name('anggota');
+Route::post('/storeanggota', [DataAnggotaController::class, 'storeAnggota'])->name('storeAnggota');
+Route::delete('/hapusanggota/{id}', [DataAnggotaController::class, 'hapus'])->name('hapusanggota');
 Route::get('/admin/peminjaman', function () { return view('admin.mainmenu.masterdata.peminjaman'); });
 // Katalog Buku
-Route::get('/admin/data-buku', function () { return view('admin.mainmenu.katalog.dataBuku'); });
-Route::get('/admin/kategori-buku', function () { return view('admin.mainmenu.katalog.kategoriBuku'); });
-Route::get('/admin/penerbit', function () { return view('admin.mainmenu.katalog.penerbit'); });
+Route::resource('/admin/data-buku', DataBukuController::class);
+
+Route::get('/admin/kategori-buku', [KategoriController::class, 'dataKategori'])->name('kategori');
+Route::post('/storekategori', [KategoriController::class, 'storeKategori'])->name('storeKategori');
+Route::put('/updatekategori/{id}', [KategoriController::class, 'updateKategori'])->name('updatekategori');
+Route::delete('/hapuskategori/{id}', [KategoriController::class, 'hapusKategori'])->name('hapuskategori');
+
+Route::get('/admin/penerbit', [PenerbitController::class, 'dataPenerbit'])->name('penerbit');
+Route::post('/storepenerbit', [PenerbitController::class, 'storePenerbit'])->name('storePenerbit');
+Route::put('/updatepenerbit/{id}', [PenerbitController::class, 'updatePenerbit'])->name('updatepenerbit');
+Route::delete('/hapuspenerbit/{id}', [PenerbitController::class, 'hapusPenerbit'])->name('hapuspenerbit');
 // Menu User
 Route::get('/admin/pinjam', function () { return view('admin.usermenu.pinjam'); });
 Route::get('/admin/kembali', function () { return view('admin.usermenu.kembali'); });

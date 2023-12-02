@@ -52,29 +52,30 @@
                                 </tr>
                             </thead>
                             <tbody>
+                                @foreach ($data as $d)
                                 <tr>
-                                    <td>1</td>
-                                    <td>Novel</td>
+                                    <td>{{ $loop->iteration }}</td>
+                                    <td>{{ $d->nama }}</td>
                                     <td class="text-center">
-                                        <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#modalEdit"><i class="fa-solid fa-pen-to-square"></i></button>
-                                        <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#modalHapus"><i class="fa-solid fa-trash"></i></button>
+                                        <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#modalEdit{{ $d->id }}"><i class="fa-solid fa-pen-to-square"></i></button>
+                                        <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#modalHapus{{ $d->id }}"><i class="fa-solid fa-trash"></i></button>
                                     </td>
                                 </tr>
 
                                 {{-- Modal Edit --}}
-                                <div class="modal fade" id="modalEdit">
+                                <div class="modal fade" id="modalEdit{{ $d->id }}">
                                     <div class="modal-dialog">
                                     <div class="modal-content">
                                         <div class="modal-header">
                                             <h1 class="modal-title fs-5" id="staticBackdropLabel">Edit Data Buku</h1>
                                         </div>
-                                        <form action="#" method="post">
+                                        <form action="{{ route('updatekategori', ['id'=> $d->id]) }}" method="post">
                                             @csrf
                                             @method('PUT')
                                             <div class="modal-body">
                                                 <div class="mb-3">
                                                     <label for="nis" class="form-label">Nama Kategori</label>
-                                                    <input type="text" class="form-control" id="nis" name="kategori" value="Novel" placeholder="Masukkan Nama Kategori" />
+                                                    <input type="text" class="form-control" id="nis" name="nama" value="{{ $d->nama }}" placeholder="Masukkan Nama Kategori" />
                                                 </div>
                                             </div>
                                             <div class="modal-footer">
@@ -90,7 +91,7 @@
                                 <!-- /.modal -->
 
                                 {{-- Modal Hapus --}}
-                                <div class="modal fade" id="modalHapus">
+                                <div class="modal fade" id="modalHapus{{ $d->id }}">
                                     <div class="modal-dialog">
                                     <div class="modal-content">
                                         <div class="modal-header">
@@ -98,11 +99,11 @@
                                         </div>
                                         <div class="modal-body">
                                             <h5 class="text-center">Apakah anda yakin akan menghapus data ini? <br>
-                                                <span class="text-danger">Novel</span>
+                                                <span class="text-danger">{{ $d->nama }}</span>
                                             </h5>
                                         </div>
                                         <div class="modal-footer">
-                                            <form action="#" method="POST">
+                                            <form action="{{ route('hapuskategori', ['id'=> $d->id]) }}" method="POST">
                                                 @csrf
                                                 @method('DELETE')
                                                 <button type="submit" class="btn btn-danger" name="hsimpan">Hapus</button>
@@ -115,6 +116,7 @@
                                     <!-- /.modal-dialog -->
                                 </div>
                                 <!-- /.modal -->
+                                @endforeach
                             </tbody>
                         </table>
                     </div>
@@ -132,12 +134,12 @@
                             <div class="modal-header">
                                 <h1 class="modal-title fs-5" id="staticBackdropLabel">Input Data Kategori</h1>
                             </div>
-                            <form action="#" method="post">
+                            <form action="{{ route("storeKategori") }}" method="post">
                                 @csrf
                                 <div class="modal-body">
                                     <div class="mb-3">
                                         <label for="namakategori" class="form-label">Nama Kategori</label>
-                                        <input type="text" class="form-control" id="namakategori" name="namakategori" placeholder="Masukkan Nama Kategori" />
+                                        <input type="text" class="form-control" id="namakategori" name="nama" placeholder="Masukkan Nama Kategori" />
                                     </div>
                                 </div>
                                 <div class="modal-footer">

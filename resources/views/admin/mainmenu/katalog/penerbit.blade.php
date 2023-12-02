@@ -52,29 +52,30 @@
                                 </tr>
                             </thead>
                             <tbody>
+                                @foreach ($data as $p)
                                 <tr>
-                                    <td>1</td>
-                                    <td>KIWKIW</td>
+                                    <td>{{ $loop->iteration }}</td>
+                                    <td>{{ $p->nama }}</td>
                                     <td class="text-center">
-                                        <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#modalEdit"><i class="fa-solid fa-pen-to-square"></i></button>
-                                        <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#modalHapus"><i class="fa-solid fa-trash"></i></button>
+                                        <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#modalEdit{{ $p->id }}"><i class="fa-solid fa-pen-to-square"></i></button>
+                                        <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#modalHapus{{ $p->id }}"><i class="fa-solid fa-trash"></i></button>
                                     </td>
                                 </tr>
 
                                 {{-- Modal Edit --}}
-                                <div class="modal fade" id="modalEdit">
+                                <div class="modal fade" id="modalEdit{{ $p->id }}">
                                     <div class="modal-dialog">
                                     <div class="modal-content">
                                         <div class="modal-header">
                                             <h1 class="modal-title fs-5" id="staticBackdropLabel">Edit Data Penerbit</h1>
                                         </div>
-                                        <form action="#" method="post">
+                                        <form action="{{ route('updatepenerbit', ['id'=> $p->id]) }}" method="post">
                                             @csrf
                                             @method('PUT')
                                             <div class="modal-body">
                                                 <div class="mb-3">
                                                     <label for="nis" class="form-label">Nama Penerbit</label>
-                                                    <input type="text" class="form-control" id="nis" name="penerbit" value="Novel" placeholder="Masukkan Nama Penerbit" />
+                                                    <input type="text" class="form-control" id="nis" name="nama" value="{{ $p->nama }}" placeholder="Masukkan Nama Penerbit" />
                                                 </div>
                                             </div>
                                             <div class="modal-footer">
@@ -90,7 +91,7 @@
                                 <!-- /.modal -->
 
                                 {{-- Modal Hapus --}}
-                                <div class="modal fade" id="modalHapus">
+                                <div class="modal fade" id="modalHapus{{ $p->id }}">
                                     <div class="modal-dialog">
                                     <div class="modal-content">
                                         <div class="modal-header">
@@ -102,7 +103,7 @@
                                             </h5>
                                         </div>
                                         <div class="modal-footer">
-                                            <form action="#" method="POST">
+                                            <form action="{{ route('hapuspenerbit', ['id'=> $p->id]) }}" method="POST">
                                                 @csrf
                                                 @method('DELETE')
                                                 <button type="submit" class="btn btn-danger" name="hsimpan">Hapus</button>
@@ -115,6 +116,7 @@
                                     <!-- /.modal-dialog -->
                                 </div>
                                 <!-- /.modal -->
+                                @endforeach
                             </tbody>
                         </table>
                     </div>
@@ -132,12 +134,12 @@
                             <div class="modal-header">
                                 <h1 class="modal-title fs-5" id="staticBackdropLabel">Input Data Penerbit</h1>
                             </div>
-                            <form action="#" method="post">
+                            <form action="{{ route("storePenerbit") }}" method="post">
                                 @csrf
                                 <div class="modal-body">
                                     <div class="mb-3">
                                         <label for="namapenerbit" class="form-label">Nama Penerbit</label>
-                                        <input type="text" class="form-control" id="namapenerbit" name="namapenerbit" placeholder="Masukkan Nama Penerbit" />
+                                        <input type="text" class="form-control" id="namapenerbit" name="nama" placeholder="Masukkan Nama Penerbit" />
                                     </div>
                                 </div>
                                 <div class="modal-footer">

@@ -57,52 +57,67 @@
                                 </tr>
                             </thead>
                             <tbody>
+                                @foreach ($data as $book)
                                 <tr>
-                                    <td>1</td>
-                                    <td>Harry Potter and the Sorcerer's Stone</td>
-                                    <td>J.K. Rowling</td>
-                                    <td>Fiksi Fantasi</td>
-                                    <td>KIWKIW</td>
-                                    <td>
-                                        <img src="path_to_image.jpg" alt="Cover Buku" style="max-width: 100px;">
-                                    </td>
-                                    <td>30</td>
+                                    <td>{{ $loop->iteration }}</td>
+                                    <td>{{ $book->judul }}</td>
+                                    <td>{{ $book->pengarang }}</td>
+                                    <td>{{ $book->kategori }}</td>
+                                    <td>{{ $book->penerbit }}</td>
                                     <td class="text-center">
-                                        <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#modalEdit"><i class="fa-solid fa-pen-to-square"></i></button>
-                                        <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#modalHapus"><i class="fa-solid fa-trash"></i></button>
+                                        <img src="{{ asset($book->image) }}" alt="Cover Buku" style="max-width: 100px;">
+                                    </td>
+                                    <td>{{ $book->stok }}</td>
+                                    <td class="text-center">
+                                        <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#modalEdit{{ $book->id }}"><i class="fa-solid fa-pen-to-square"></i></button>
+                                        <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#modalHapus{{ $book->id }}"><i class="fa-solid fa-trash"></i></button>
                                     </td>
                                 </tr>
 
                                 {{-- Modal Edit --}}
-                                <div class="modal fade" id="modalEdit">
+                                <div class="modal fade" id="modalEdit{{ $book->id }}">
                                     <div class="modal-dialog">
                                     <div class="modal-content">
                                         <div class="modal-header">
                                             <h1 class="modal-title fs-5" id="staticBackdropLabel">Edit Data Buku</h1>
                                         </div>
-                                        <form action="#" method="post">
+                                        <form action="{{ route('data-buku.update', $book->id) }}" method="post" enctype="multipart/form-data">
                                             @csrf
                                             @method('PUT')
                                             <div class="modal-body">
                                                 <div class="mb-3">
                                                     <label for="nis" class="form-label">Judul Buku</label>
-                                                    <input type="text" class="form-control" id="nis" name="judulbuku" value="Harry Potter and the Sorcerer's Stone" placeholder="Masukkan Nama Peminjam" />
+                                                    <input type="text" class="form-control" id="nis" name="judul" value="{{ $book->judul }}" />
                                                 </div>
                                                 <div class="mb-3">
                                                     <label for="nama" class="form-label">Pengarang</label>
-                                                    <input type="text" class="form-control" id="nama" name="nama" value="J.K. Rowling" placeholder="Masukkan NIM" />
+                                                    <input type="text" class="form-control" id="nama" name="pengarang" value="{{ $book->pengarang }}" placeholder="Masukkan NIM" />
                                                 </div>
                                                 <div class="mb-3">
-                                                    <label for="username" class="form-label">Kategori</label>
-                                                    <input type="text"  class="form-control" id="username" name="username" value="Fiksi Fantasi" placeholder="Masukkan Username"/>
+                                                    <label for="kategori" class="form-label">Kategori</label>
+                                                    <select class="form-control" name="kategori" id="kategori">
+                                                        <option value="">Pilih Kategori Buku</option>
+                                                        @foreach ($kategori as $k)
+                                                            <option value="{{ $k->nama }}">{{ $k->nama }}</option>
+                                                        @endforeach
+                                                    </select>
+                                                </div>
+                                                <div class="mb-3">
+                                                    <label for="penerbit" class="form-label">Penerbit</label>
+                                                    <select class="form-control" name="penerbit" id="penerbit">
+                                                        <option value="">Pilih Penerbit Buku</option>
+                                                        @foreach ($penerbit as $pen)
+                                                            <option value="{{ $pen->nama }}">{{ $pen->nama }}</option>
+                                                        @endforeach
+                                                    </select>
                                                 </div>
                                                 <div class="mb-3">
                                                     <label for="password" class="form-label">Sampul</label>
-                                                    <input type="file"  class="form-control" id="password" name="password" value="" placeholder=""/>
+                                                    <input type="file"  class="form-control" id="password" name="sampul" value="" placeholder=""/>
                                                 </div>
                                                 <div class="mb-3">
                                                     <label for="stock" class="form-label">Stock</label>
-                                                    <input type="number"  class="form-control" id="stock" name="stock" value="30" placeholder="Masukkan Stock Buku"/>
+                                                    <input type="number"  class="form-control" id="stock" name="stock" value="{{ $book->stok }}" placeholder="Masukkan Stock Buku"/>
                                                 </div>
                                             </div>
                                             <div class="modal-footer">
@@ -118,7 +133,7 @@
                                 <!-- /.modal -->
 
                                 {{-- Modal Hapus --}}
-                                <div class="modal fade" id="modalHapus">
+                                <div class="modal fade" id="modalHapus{{ $book->id }}">
                                     <div class="modal-dialog">
                                     <div class="modal-content">
                                         <div class="modal-header">
@@ -126,11 +141,11 @@
                                         </div>
                                         <div class="modal-body">
                                             <h5 class="text-center">Apakah anda yakin akan menghapus data ini? <br>
-                                                <span class="text-danger">Harry Potter and the Sorcerer's Stone</span>
+                                                <span class="text-danger">{{ $book->judul }}</span>
                                             </h5>
                                         </div>
                                         <div class="modal-footer">
-                                            <form action="#" method="POST">
+                                            <form action="{{ route('data-buku.destroy', $book->id) }}" method="POST">
                                                 @csrf
                                                 @method('DELETE')
                                                 <button type="submit" class="btn btn-danger" name="hsimpan">Hapus</button>
@@ -143,6 +158,7 @@
                                     <!-- /.modal-dialog -->
                                 </div>
                                 <!-- /.modal -->
+                                @endforeach
                             </tbody>
                         </table>
                     </div>
@@ -160,12 +176,12 @@
                             <div class="modal-header">
                                 <h1 class="modal-title fs-5" id="staticBackdropLabel">Input Data Buku</h1>
                             </div>
-                            <form action="#" method="post">
+                            <form action="{{ route('data-buku.store') }}" method="post" enctype="multipart/form-data">
                                 @csrf
                                 <div class="modal-body">
                                     <div class="mb-3">
                                         <label for="judulbuku" class="form-label">Judul Buku</label>
-                                        <input type="text" class="form-control" id="judulbuku" name="judulbuku" placeholder="Masukkan Judul Buku" />
+                                        <input type="text" class="form-control" id="judulbuku" name="judul" placeholder="Masukkan Judul Buku" />
                                     </div>
                                     <div class="mb-3">
                                         <label for="pengarang" class="form-label">Pengarang</label>
@@ -173,12 +189,27 @@
                                     </div>
                                     <div class="mb-3">
                                         <label for="kategori" class="form-label">Kategori</label>
-                                        <input type="text"  class="form-control" id="kategori" name="kategori" placeholder="Masukkan Kategori"/>
+                                        <select class="form-control" name="kategori" id="kategori">
+                                            <option value="">Pilih Kategori Buku</option>
+                                            @foreach ($kategori as $k)
+                                                <option value="{{ $k->nama }}">{{ $k->nama }}</option>
+                                            @endforeach
+                                        </select>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="penerbit" class="form-label">Penerbit</label>
+                                        <select class="form-control" name="penerbit" id="penerbit">
+                                            <option value="">Pilih Penerbit Buku</option>
+                                            @foreach ($penerbit as $pen)
+                                                <option value="{{ $pen->nama }}">{{ $pen->nama }}</option>
+                                            @endforeach
+                                        </select>
                                     </div>
                                     <div class="mb-3">
                                         <label for="sampul" class="form-label">Sampul</label>
-                                        <input type="file"  class="form-control" id="sampul" name="sampul"/>
+                                        <input type="file"  class="form-control" id="sampul" name="sampul" accept="image/*" onchange="document.getElementById('output').src = window.URL.createObjectURL(this.files[0])"/>
                                     </div>
+                                    <div class="mt-3"><img src="" id="output" alt="" width="100"></div>
                                     <div class="mb-3">
                                         <label for="stock" class="form-label">Stock</label>
                                         <input type="number"  class="form-control" id="stock" name="stock" value="" placeholder="Masukkan Stock Buku"/>

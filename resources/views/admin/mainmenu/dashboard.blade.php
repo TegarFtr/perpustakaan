@@ -31,14 +31,14 @@
                 <div class="col-12 col-sm-6 col-md-3">
                     <div class="small-box bg-info">
                         <div class="inner">
-                        <h3>150</h3>
+                        <h3>{{ $totalAnggota }}</h3>
 
                         <p>Anggota</p>
                         </div>
                         <div class="icon">
                         <i class="fa-solid fa-users"></i>
                         </div>
-                        <a href="{{ url('/admin/anggota') }}" class="small-box-footer">
+                        <a href="{{ route('anggota') }}" class="small-box-footer">
                         More info <i class="fas fa-arrow-circle-right"></i>
                         </a>
                     </div>
@@ -48,7 +48,7 @@
                 <div class="col-12 col-sm-6 col-md-3">
                     <div class="small-box bg-success">
                         <div class="inner">
-                        <h3>53<sup style="font-size: 20px">%</sup></h3>
+                        <h3>53</h3>
 
                         <p>Buku</p>
                         </div>
