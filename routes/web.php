@@ -4,6 +4,7 @@ use App\Http\Controllers\AdminController;
 use App\Http\Controllers\DataAnggotaController;
 use App\Http\Controllers\DataBukuController;
 use App\Http\Controllers\KategoriController;
+use App\Http\Controllers\ListBukuController;
 use App\Http\Controllers\PenerbitController;
 use Illuminate\Support\Facades\Route;
 
@@ -26,7 +27,7 @@ Route::resource('penerbit', PenerbitController::class);
 // Menu User
 Route::get('/admin/pinjam', function () { return view('admin.usermenu.pinjam'); });
 Route::get('/admin/kembali', function () { return view('admin.usermenu.kembali'); });
-Route::get('/admin/list-buku', function () { return view('admin.usermenu.listBuku'); });
+Route::resource('list-buku', ListBukuController::class);
 // Menu Lain
 Route::get('/admin/profile', function () { return view('admin.menulain.profile'); });
 Route::get('/admin/petugas', function () { return view('admin.menulain.petugas'); });

@@ -2,14 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Book;
+use App\Models\Buku;
 use App\Models\Kategori;
 use App\Models\Penerbit;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Storage;
-use App\Models\Book;
-use Illuminate\Http\RedirectResponse;
-use Illuminate\Support\Facades\File;
 
 class DataBukuController extends Controller
 {
@@ -18,7 +17,7 @@ class DataBukuController extends Controller
      */
     public function index()
     {
-        $data = Book::get();
+        $data = Buku::get();
         $penerbit = Penerbit::get();
         $kategori = Kategori::get();
         return view('admin.mainmenu.katalog.dataBuku', compact('data', 'penerbit', 'kategori'));
@@ -76,7 +75,7 @@ class DataBukuController extends Controller
         unset($requestData['stock']);
         unset($requestData['sampul']);
 
-        Book::create($requestData);
+        Buku::create($requestData);
 
         // Redirect with a success message
         return redirect()->route('data-buku.index')->with('success', 'Buku successfully added!');
@@ -94,9 +93,8 @@ class DataBukuController extends Controller
      * Show the form for editing the specified resource.
      */
     public function edit($id)
-{
-
-}
+    {
+    }
 
 public function update(Request $request, $id)
 {
@@ -125,7 +123,7 @@ public function update(Request $request, $id)
         unset($requestData['sampul']);
     } else {
         // Keep the existing image if no new image is uploaded
-        $requestData['sampul'] = Book::findOrFail($id)->sampul;
+        $requestData['sampul'] = Buku::findOrFail($id)->sampul;
     }
 
     // Make sure 'stok' field is present in the $requestData array
@@ -137,7 +135,7 @@ public function update(Request $request, $id)
     // Remove 'stock' from $requestData if it's not needed in the database
     unset($requestData['stock']);
 
-    $book = Book::findOrFail($id);
+    $book = Buku::findOrFail($id);
     $book->update($requestData);
 
     // Redirect with a success message
@@ -152,7 +150,7 @@ public function update(Request $request, $id)
      */
     public function destroy(string $id)
     {
-        $post = Book::findOrFail($id);
+        $post = Buku::findOrFail($id);
 
         //delete image
         Storage::delete('public/image/'. $post->image);

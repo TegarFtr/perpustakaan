@@ -279,7 +279,7 @@
             </a>
           </li>
           <li class="nav-item">
-            <a href="{{ url('/admin/list-buku') }}" class="nav-link @yield('activeListBuku')">
+            <a href="{{ url('list-buku') }}" class="nav-link @yield('activeListBuku')">
               <i class="nav-icon fas fa-book"></i>
               <p>
                 List Buku

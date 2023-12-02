@@ -42,45 +42,19 @@
                     <!-- /.card-header -->
                     <div class="card-body table-responsive p-0" style="height: 680px;">
                         <div class="row row-cols-1 row-cols-md-6 g-4 ml-1 mr-1">
-                            <div class="col">
-                                <div class="card">
-                                <img src="{{ asset('tesbuku/kedamaian.jpg') }}" class="card-img-top" alt="Gambar Buku">
-                                <div class="card-body">
-                                    <h5 class="card-title">Kedamaian</h5>
-                                    <p class="card-text">Deskripsi singkat dari buku.</p>
-                                    <div class="d-flex justify-content-between">
-                                    <p class="card-stock">Stok: 10</p>
-                                    <a href="#" class="btn btn-secondary">Pinjam</a>
+                            @foreach ($data as $ls)
+                                <div class="col">
+                                    <div class="card">
+                                    <img src="{{ asset("$ls->image") }}" class="card-img-top" alt="Gambar Buku">
+                                    <div class="card-body">
+                                        <h3 class="card-title"><strong>{{ $ls->judul }}</strong></h3>
+                                        <p class="card-text">{{ $ls->pengarang }}</p>
+                                        <p class="card-stock">Stok : {{ $ls->stok }}</p>
+                                        <a href="#" class="btn btn-secondary">Pinjam</a>
+                                    </div>
                                     </div>
                                 </div>
-                                </div>
-                            </div>
-                            <div class="col">
-                                <div class="card">
-                                <img src="{{ asset('tesbuku/pulang.jpg') }}" class="card-img-top" alt="Gambar Buku">
-                                <div class="card-body">
-                                    <h5 class="card-title">Pulang</h5>
-                                    <p class="card-text">Deskripsi singkat dari buku.</p>
-                                    <div class="d-flex justify-content-between">
-                                    <p class="card-stock">Stok: 5</p>
-                                    <a href="#" class="btn btn-secondary">Pinjam</a>
-                                    </div>
-                                </div>
-                                </div>
-                            </div>
-                            <div class="col">
-                                <div class="card">
-                                <img src="{{ asset('tesbuku/senja.jpg') }}" class="card-img-top" alt="Gambar Buku">
-                                <div class="card-body">
-                                    <h5 class="card-title">Senja</h5>
-                                    <p class="card-text">Deskripsi singkat dari buku.</p>
-                                    <div class="d-flex justify-content-between">
-                                    <p class="card-stock">Stok: 3</p>
-                                    <a href="#" class="btn btn-secondary">Pinjam</a>
-                                    </div>
-                                </div>
-                                </div>
-                            </div>
+                            @endforeach
                         </div>
                     </div>
                     <!-- /.card-body -->
