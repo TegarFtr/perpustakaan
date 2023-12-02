@@ -2,12 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Book;
 use App\Models\Kategori;
 use App\Models\Penerbit;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Storage;
+use App\Models\Book;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\File;
 
@@ -105,6 +105,7 @@ public function update(Request $request, $id)
         'pengarang' => 'required|min:2',
         'kategori' => 'required',
         'penerbit' => 'required',
+        'sampul' => "required|unique:users,username, $id",
         'stock' => 'required',
     ]);
 

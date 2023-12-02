@@ -8,13 +8,28 @@ use Illuminate\Support\Facades\Validator;
 
 class KategoriController extends Controller
 {
-    // Awal Kategori Buku
-    public function dataKategori(){
+    /**
+     * Display a listing of the resource.
+     */
+    public function index()
+    {
         $data = Kategori::get();
         return view('admin.mainmenu.katalog.kategoriBuku', compact('data'));
     }
 
-    public function storeKategori(Request $request){
+    /**
+     * Show the form for creating a new resource.
+     */
+    public function create()
+    {
+        //
+    }
+
+    /**
+     * Store a newly created resource in storage.
+     */
+    public function store(Request $request)
+    {
         $validator = Validator::make($request->all(), [
             'nama' => 'required|min:2',
         ]);
@@ -31,10 +46,31 @@ class KategoriController extends Controller
         Kategori::create($data);
 
         // Redirect with a success message
-        return redirect()->route('kategori')->with('success', 'Kategori successfully added!');
+        return redirect()->route('kategori.index')->with('success', 'Kategori successfully added!');
+
     }
 
-    public function updateKategori(Request $request,$id){
+    /**
+     * Display the specified resource.
+     */
+    public function show(string $id)
+    {
+        //
+    }
+
+    /**
+     * Show the form for editing the specified resource.
+     */
+    public function edit(string $id)
+    {
+        //
+    }
+
+    /**
+     * Update the specified resource in storage.
+     */
+    public function update(Request $request, string $id)
+    {
         $validator = Validator::make($request->all(),[
             'nama' => 'required'
         ]);
@@ -44,10 +80,14 @@ class KategoriController extends Controller
 
         Kategori::whereId($id)->update($data);
 
-        return redirect()->route('kategori');
+        return redirect()->route('kategori.index');
     }
 
-    public function hapusKategori(Request $request, $id){
+    /**
+     * Remove the specified resource from storage.
+     */
+    public function destroy(string $id)
+    {
         $data = Kategori::find($id);
 
         if($data){
@@ -56,5 +96,4 @@ class KategoriController extends Controller
 
         return redirect()->route('kategori');
     }
-    // Akhir Kategori Buku\
 }

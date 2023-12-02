@@ -77,7 +77,7 @@
                             <div class="modal-header">
                                 <h1 class="modal-title fs-5" id="staticBackdropLabel">Edit Data Anggota</h1>
                             </div>
-                            <form action="#" method="post">
+                            <form action="{{ route('anggota.update', $val->id) }}" method="post">
                                 @csrf
                                 @method('PUT')
                                 <div class="modal-body">
@@ -123,7 +123,7 @@
                                 </h5>
                             </div>
                             <div class="modal-footer">
-                                <form action="{{ route('hapusanggota', ['id'=> $val->id]) }}" method="POST">
+                                <form action="{{ route('anggota.destroy', $val->id) }}" method="POST">
                                     @csrf
                                     @method('DELETE')
                                     <button type="submit" class="btn btn-danger" name="hsimpan">Hapus</button>
@@ -155,7 +155,7 @@
                             <div class="modal-header">
                                 <h1 class="modal-title fs-5" id="staticBackdropLabel">Form Data Anggota</h1>
                             </div>
-                            <form action="{{ route('storeAnggota') }}" method="post">
+                            <form action="{{ route('anggota.store') }}" method="post">
                                 @csrf
                                 <div class="modal-body">
                                     <div class="mb-3">

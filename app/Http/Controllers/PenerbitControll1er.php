@@ -8,28 +8,13 @@ use Illuminate\Support\Facades\Validator;
 
 class PenerbitController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
-    public function index()
-    {
+    // Awal Penerbit Buku
+    public function dataPenerbit(){
         $data = Penerbit::get();
         return view('admin.mainmenu.katalog.penerbit', compact('data'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     */
-    public function store(Request $request)
-    {
+    public function storePenerbit(Request $request){
         $validator = Validator::make($request->all(), [
             'nama' => 'required|min:2',
         ]);
@@ -46,30 +31,10 @@ class PenerbitController extends Controller
         Penerbit::create($data);
 
         // Redirect with a success message
-        return redirect()->route('penerbit.index')->with('success', 'Penerbit successfully added!');
+        return redirect()->route('penerbit')->with('success', 'Penerbit successfully added!');
     }
 
-    /**
-     * Display the specified resource.
-     */
-    public function show(string $id)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(string $id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, string $id)
-    {
+    public function updatePenerbit(Request $request,$id){
         $validator = Validator::make($request->all(),[
             'nama' => 'required'
         ]);
@@ -79,20 +44,17 @@ class PenerbitController extends Controller
 
         Penerbit::whereId($id)->update($data);
 
-        return redirect()->route('penerbit.index');
+        return redirect()->route('penerbit');
     }
 
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(string $id)
-    {
+    public function hapusPenerbit(Request $request, $id){
         $data = Penerbit::find($id);
 
         if($data){
             $data->delete();
         }
 
-        return redirect()->route('penerbit.index');
+        return redirect()->route('penerbit');
     }
+    // Akhir Kategori Buku
 }

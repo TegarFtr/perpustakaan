@@ -69,7 +69,7 @@
                                         <div class="modal-header">
                                             <h1 class="modal-title fs-5" id="staticBackdropLabel">Edit Data Penerbit</h1>
                                         </div>
-                                        <form action="{{ route('updatepenerbit', ['id'=> $p->id]) }}" method="post">
+                                        <form action="{{ route('penerbit.update', $p->id) }}" method="post">
                                             @csrf
                                             @method('PUT')
                                             <div class="modal-body">
@@ -103,7 +103,7 @@
                                             </h5>
                                         </div>
                                         <div class="modal-footer">
-                                            <form action="{{ route('hapuspenerbit', ['id'=> $p->id]) }}" method="POST">
+                                            <form action="{{ route('penerbit.destroy', $p->id) }}" method="POST">
                                                 @csrf
                                                 @method('DELETE')
                                                 <button type="submit" class="btn btn-danger" name="hsimpan">Hapus</button>
@@ -134,7 +134,7 @@
                             <div class="modal-header">
                                 <h1 class="modal-title fs-5" id="staticBackdropLabel">Input Data Penerbit</h1>
                             </div>
-                            <form action="{{ route("storePenerbit") }}" method="post">
+                            <form action="{{ route('penerbit.store') }}" method="post">
                                 @csrf
                                 <div class="modal-body">
                                     <div class="mb-3">

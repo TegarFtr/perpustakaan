@@ -207,7 +207,7 @@
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="{{ url('/admin/anggota') }}" class="nav-link @yield('activeAnggota')">
+                <a href="{{ url('/anggota') }}" class="nav-link @yield('activeAnggota')">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Data Anggota</p>
                 </a>
@@ -231,19 +231,19 @@
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="{{ url('/admin/data-buku') }}" class="nav-link @yield('activeDataBuku')">
+                <a href="{{ url('data-buku') }}" class="nav-link @yield('activeDataBuku')">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Data Buku</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="{{ url('/admin/kategori-buku') }}" class="nav-link @yield('activeKategoriBuku')">
+                <a href="{{ url('kategori') }}" class="nav-link @yield('activeKategoriBuku')">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Kategori Buku</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="{{ url('/admin/penerbit') }}" class="nav-link @yield('activePenerbit')">
+                <a href="{{ url('penerbit') }}" class="nav-link @yield('activePenerbit')">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Data Penerbit</p>
                 </a>
