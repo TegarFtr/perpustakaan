@@ -15,11 +15,11 @@ class PeminjamanController extends Controller
      */
     public function index(Request $request)
     {
-        $judul = $request->input('judul');
+        // $judulBuku = $judul;
         $data = Peminjaman::get()->where('nama_peminjam', Auth::user()->nama);
         $buku = Buku::get();
         $userRole = auth()->user()->role;
-        return view('usermenu.pinjam', compact('judul', 'data', 'buku', 'userRole'));
+        return view('usermenu.pinjam', compact('data', 'buku', 'userRole'));
     }
 
     /**

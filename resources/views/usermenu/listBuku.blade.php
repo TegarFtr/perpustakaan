@@ -49,21 +49,59 @@
                                             <h3 class="card-title"><strong>{{ $ls->judul }}</strong></h3>
                                             <p class="card-text">{{ $ls->pengarang }}</p>
                                             <p class="card-stock">Stok : {{ $ls->stok }}</p>
-                                            <a href="#" class="btn btn-secondary btn-pinjam" data-judul="{{ $ls->judul }}">Pinjam</a>
+                                            <a href="" class="btn btn-secondary btn-pinjam" data-toggle="modal" data-target="#modalTambah{{ $ls->id }}" data-judul="{{ $ls->judul }}">Pinjam</a>
                                         </div>
                                     </div>
                                 </div>
+                                <div class="modal fade" id="modalTambah{{ $ls->id }}">
+                                    <div class="modal-dialog">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h1 class="modal-title fs-5" id="staticBackdropLabel">Form Data Anggota</h1>
+                                        </div>
+                                        <form action="{{ route('peminjaman.store') }}" method="post">
+                                            @csrf
+                                            <div class="modal-body">
+                                                <div class="mb-3">
+                                                    <label for="peminjam" class="form-label">Nama Peminjam</label>
+                                                    <input type="text" class="form-control" id="peminjam" name="nama_peminjam" placeholder="Masukkan Nama Peminjam" value="{{ Auth::user()->nama }}" readonly/>
+                                                </div>
+                                                <div class="mb-3">
+                                                    <label for="judulbuku" class="form-label">Judul Buku</label>
+                                                    <input type="text" class="form-control" id="judulbuku" name="judul" value="{{ $ls->judul }}" placeholder="Masukkan Judul Buku"/>
+                                                </div>
+                                                <div class="mb-3">
+                                                    <label for="tanggalpinjam" class="form-label">Tanggal Peminjaman</label>
+                                                    <input type="date"  class="form-control" id="tanggalpinjam" name="tanggal_peminjaman" value="{{date('Y-m-d')}}" readonly/>
+                                                </div>
+                                                <div class="mb-3">
+                                                    <label for="tanggalkembali" class="form-label">Batas Peminjaman</label>
+                                                    <input type="date"  class="form-control" id="tanggalkembali" name="batas_peminjaman" value="{{date('Y-m-d', strtotime('+7 day'))}}" readonly/>
+                                                </div>
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="submit" class="btn btn-primary" name="tsimpan">Tambahkan</button>
+                                                <button type="button" class="btn btn-danger" data-dismiss="modal">Batal</button>
+                                            </div>
+                                        </form>
+                                    </div>
+                                    <!-- /.modal-content -->
+                                    </div>
+                                    <!-- /.modal-dialog -->
+                                </div>
+                                <!-- /.modal -->
                             @endforeach
                         </div>
                     </div>
                     <!-- /.card-body -->
+
                 </div>
                 <!-- /.card -->
             </div>
         </div>
     </div>
 
-    @push('scripts')
+    {{-- @push('scripts')
         <script>
             $(document).ready(function () {
                 $('.btn-pinjam').on('click', function () {
@@ -88,5 +126,5 @@
                 });
             });
         </script>
-    @endpush
+    @endpush --}}
 @endsection

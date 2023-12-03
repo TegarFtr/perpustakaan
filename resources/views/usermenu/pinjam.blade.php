@@ -48,7 +48,7 @@
                                     </div>
                                     <div class="mb-3">
                                         <label for="judulbuku" class="form-label">Judul Buku</label>
-                                        <select type="text" class="form-control" id="judulbuku" name="judul" placeholder="Masukkan Judul Buku" value="{{ session('judul_peminjaman') }}">
+                                        <select type="text" class="form-control" id="judulbuku" name="judul" placeholder="Masukkan Judul Buku">
                                             <option value="">Pilih Buku</option>
                                             @foreach ($buku as $b)
                                                 <option value="{{ $b->judul }}">{{ $b->judul }}</option>
