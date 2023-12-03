@@ -387,24 +387,7 @@
 <script src="{{ asset('AdminLTE') }}/plugins/flot/plugins/jquery.flot.pie.js"></script>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-    <script>
-        $(function() {
-            $("#datepicker").datepicker({
-                dateFormat: 'yy-mm-dd',
-                showButtonPanel: true,
-                changeMonth: true,
-                changeYear: true,
-                yearRange: "-100:+0",
-            });
+    @stack('scripts')
 
-            $("#datepicker2").datepicker({
-                dateFormat: 'yy-mm-dd',
-                showButtonPanel: true,
-                changeMonth: true,
-                changeYear: true,
-                yearRange: "-100:+0",
-            });
-        });
-    </script>
 </body>
 </html>

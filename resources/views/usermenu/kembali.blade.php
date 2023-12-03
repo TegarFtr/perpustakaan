@@ -39,20 +39,24 @@
               <div class="card-body">
                 <div class="tab-content" id="custom-tabs-four-tabContent">
                   <div class="tab-pane fade show active" id="custom-tabs-four-home" role="tabpanel" aria-labelledby="custom-tabs-four-home-tab">
-                        <form action="#" method="post">
+                        <form action="{{ route('peminjaman.update', App\Models\Peminjaman::latest()->first()->id) }}" method="post">
                                 @csrf
+                                @method('PUT')
                                 <div class="modal-body">
                                     <div class="mb-3">
                                         <label for="judulbuku" class="form-label">Judul Buku</label>
-                                        <input type="text" class="form-control" id="judulbuku" name="judulbuku" placeholder="Masukkan Judul Buku" />
+                                        <select type="text" class="form-control" id="judulbuku" name="judul" placeholder="Masukkan Judul Buku">
+                                            <option value="">Pilih Buku</option>
+                                            @foreach ($data as $b)
+                                                @if (isset($b->status) && $b->status != 'Dikembalikan' && $b->status != 'Terlambat')
+                                                    <option value="{{ $b->judul }}">{{ $b->judul }}</option>
+                                                @endif
+                                            @endforeach
+                                        </select>
                                     </div>
                                     <div class="mb-3">
                                         <label for="tanggalpinjam" class="form-label">Tanggal Pengembalian</label>
-                                        <input type="date"  class="form-control" id="tanggalpinjam" name="tanggalpinjam" value="{{date('Y-m-d')}}" disabled/>
-                                    </div>
-                                    <div class="mb-3">
-                                        <label for="tanggalpinjam" class="form-label">Denda</label>
-                                        <input type="text"  class="form-control" id="tanggalpinjam" name="tanggalpinjam" value="0" disabled/>
+                                        <input type="date"  class="form-control" id="tanggalpinjam" name="tanggal_pengembalian" value="{{date('Y-m-d')}}" readonly/>
                                     </div>
                                 </div>
                                 <div class="modal-footer">
@@ -72,12 +76,15 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr>
-                                    <td>1</td>
-                                    <td>J.K. Rowling</td>
-                                    <td>Harry Potter and the Sorcerer's Stone</td>
-                                    <td>{{date('Y-m-d')}}</td>
-                                    <td>0</td>
+                                @foreach ($data as $pj)
+                                    <tr>
+                                        <td>{{ $loop->iteration }}</td>
+                                        <td>{{ $pj->nama_peminjam }}</td>
+                                        <td>{{ $pj->judul }}</td>
+                                        <td>{{ $pj->tanggal_pengembalian }}</td>
+                                        <td>{{ $pj->denda }}</td>
+                                    </tr>
+                                @endforeach
                             </tbody>
                         </table>
                   </div>

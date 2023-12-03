@@ -22,6 +22,15 @@ class ListBukuController extends Controller
         return view('usermenu.listBuku', compact('data', 'userRole'));
     }
 
+    public function saveToSession(Request $request)
+    {
+        $judul = $request->input('judul');
+
+        // Simpan judul ke dalam sesi
+        $request->session()->put('judul_peminjaman', $judul);
+
+        return response()->json(['success' => true]);
+    }
     /**
      * Show the form for creating a new resource.
      */

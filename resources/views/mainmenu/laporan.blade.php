@@ -86,4 +86,26 @@
         </div>
     </div>
     <!-- /.content -->
+
+    @push('scripts')
+        <script>
+        $(function() {
+            $("#datepicker").datepicker({
+                dateFormat: 'yy-mm-dd',
+                showButtonPanel: true,
+                changeMonth: true,
+                changeYear: true,
+                yearRange: "-100:+0",
+            });
+
+            $("#datepicker2").datepicker({
+                dateFormat: 'yy-mm-dd',
+                showButtonPanel: true,
+                changeMonth: true,
+                changeYear: true,
+                yearRange: "-100:+0",
+            });
+        });
+    </script>
+    @endpush
 @endsection

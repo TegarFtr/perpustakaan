@@ -9,7 +9,9 @@ use App\Http\Controllers\PeminjamanController;
 use App\Http\Controllers\PenerbitController;
 use App\Http\Controllers\PetugasController;
 use App\Http\Controllers\SesiController;
+use App\Models\Buku;
 use App\Models\Peminjaman;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 Route::middleware(['guest'])->group(function () {
@@ -60,8 +62,12 @@ Route::middleware(['guest'])->group(function () {
     Route::middleware(['auth','user'])->group(function () {
         Route::resource('peminjaman', PeminjamanController::class);
         Route::get('kembali', function () {
+            $data = Peminjaman::get()->where('nama_peminjam', Auth::user()->nama);
+            $buku = Buku::get();
             $userRole = auth()->user()->role;
-            return view('usermenu.kembali', compact('userRole'));
+            return view('usermenu.kembali', compact('data', 'buku', 'userRole'));
         });
         Route::resource('list-buku', ListBukuController::class);
+        Route::post('/list-buku/save-to-session', 'ListBukuController@saveToSession')->name('list-buku.save-to-session')->middleware('web');
+
     });

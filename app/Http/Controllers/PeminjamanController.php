@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Buku;
 use App\Models\Peminjaman;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
 
 class PeminjamanController extends Controller
@@ -12,12 +13,13 @@ class PeminjamanController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
-        $data = Peminjaman::get();
+        $judul = $request->input('judul');
+        $data = Peminjaman::get()->where('nama_peminjam', Auth::user()->nama);
         $buku = Buku::get();
         $userRole = auth()->user()->role;
-        return view('usermenu.pinjam', compact('data', 'buku', 'userRole'));
+        return view('usermenu.pinjam', compact('judul', 'data', 'buku', 'userRole'));
     }
 
     /**
@@ -33,6 +35,7 @@ class PeminjamanController extends Controller
      */
     public function store(Request $request)
     {
+
         $validator = Validator::make($request->all(), [
             'nama_peminjam' => 'required',
             'judul' => 'required',
@@ -100,7 +103,34 @@ class PeminjamanController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $peminjaman = Peminjaman::find($id);
+
+        // Hitung selisih hari
+        $tanggalPengembalian = \Carbon\Carbon::parse($request->tanggal_pengembalian);
+        $batasPeminjaman = \Carbon\Carbon::parse($peminjaman->batas_peminjaman);
+        $selisihHari = $tanggalPengembalian->diffInDays($batasPeminjaman);
+
+        // Hitung denda jika terlambat
+        $denda = $selisihHari > 0 ? $selisihHari * 1000 : 0;
+
+        // Simpan data pengembalian
+        $peminjaman->status = $selisihHari > 0 ? 'Terlambat' : 'Dikembalikan';
+        $peminjaman->tanggal_pengembalian = $request->tanggal_pengembalian;
+        $peminjaman->denda = $denda;
+        $peminjaman->save();
+
+        $data['status'] = $selisihHari > 0 ? 'Terlambat' : 'Dikembalikan';
+        $data['tanggal_pengembalian'] = $request->tanggal_pengembalian;
+        $data['denda'] = $denda;
+
+        Peminjaman::whereId($id)->update($data);
+
+        // Tambahkan stok buku kembali
+        $book = Buku::where('judul', $peminjaman->judul)->first();
+        $book->stok += 1;
+        $book->save();
+
+        return redirect()->back()->with('success', 'Buku berhasil dikembalikan.');
     }
 
     /**
