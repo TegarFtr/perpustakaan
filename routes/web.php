@@ -31,7 +31,7 @@ Route::middleware(['guest'])->group(function () {
     Route::middleware(['auth','admin'])->group(function () {
         Route::get('profile', function () {
             $userRole = auth()->user()->role;
-            return view('admin.menulain.profile', compact('userRole'));
+            return view('menulain.profile', compact('userRole'));
         });
         Route::resource('petugas', PetugasController::class);
     });
@@ -41,14 +41,14 @@ Route::middleware(['guest'])->group(function () {
 
         Route::get('laporan', function () {
             $userRole = auth()->user()->role;
-            return view('admin.mainmenu.laporan', compact('userRole'));
+            return view('mainmenu.laporan', compact('userRole'));
         });
 
         Route::resource('anggota', DataAnggotaController::class);
         Route::get('rekap-peminjaman', function () {
             $data = Peminjaman::get();
             $userRole = auth()->user()->role;
-            return view('admin.mainmenu.masterdata.peminjaman', compact('data', 'userRole'));
+            return view('mainmenu.masterdata.peminjaman', compact('data', 'userRole'));
         });
 
         Route::resource('data-buku', DataBukuController::class);
@@ -61,7 +61,7 @@ Route::middleware(['guest'])->group(function () {
         Route::resource('peminjaman', PeminjamanController::class);
         Route::get('kembali', function () {
             $userRole = auth()->user()->role;
-            return view('admin.usermenu.kembali', compact('userRole'));
+            return view('usermenu.kembali', compact('userRole'));
         });
         Route::resource('list-buku', ListBukuController::class);
     });

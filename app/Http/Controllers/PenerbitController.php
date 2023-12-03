@@ -15,7 +15,7 @@ class PenerbitController extends Controller
     {
         $data = Penerbit::get();
         $userRole = auth()->user()->role;
-        return view('admin.mainmenu.katalog.penerbit', compact('data', 'userRole'));
+        return view('mainmenu.katalog.penerbit', compact('data', 'userRole'));
     }
 
     /**

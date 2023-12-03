@@ -21,7 +21,7 @@ class DataBukuController extends Controller
         $penerbit = Penerbit::get();
         $kategori = Kategori::get();
         $userRole = auth()->user()->role;
-        return view('admin.mainmenu.katalog.dataBuku', compact('data', 'penerbit', 'kategori', 'userRole'));
+        return view('mainmenu.katalog.dataBuku', compact('data', 'penerbit', 'kategori', 'userRole'));
     }
 
     /**

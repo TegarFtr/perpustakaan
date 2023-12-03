@@ -41,7 +41,7 @@
                     <!-- /.card-header -->
                     <div class="card-body table-responsive p-0" style="height: 680px;">
                         <div class="row row-cols-1 row-cols-md-6 g-4 ml-1 mr-1" id="bookList">
-                            @include('admin.usermenu.listBukuItems')
+                            @include('usermenu.listBukuItems')
                         </div>
                     </div>
                     <!-- /.card-body -->

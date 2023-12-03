@@ -15,7 +15,7 @@ class DataAnggotaController extends Controller
     {
         $data = User::get()->where('role', 'user');
         $userRole = auth()->user()->role;
-        return view('admin.mainmenu.masterdata.anggota', compact('data', 'userRole'));
+        return view('mainmenu.masterdata.anggota', compact('data', 'userRole'));
     }
 
     /**
@@ -48,7 +48,8 @@ class DataAnggotaController extends Controller
         $data['nis'] = $request->nis;
         $data['nama'] = $request->nama;
         $data['username'] = $request->username;
-        $data['password'] = $request->password;
+        $data['password_login'] = $request->password;
+        $data['password'] = bcrypt($request->password);
 
         User::create($data);
 
@@ -88,7 +89,8 @@ class DataAnggotaController extends Controller
         $data['nis'] = $request->nis;
         $data['nama'] = $request->nama;
         $data['username'] = $request->username;
-        $data['password'] = $request->password;
+        $data['password_login'] = $request->password;
+        $data['password'] = bcrypt($request->password);
 
         User::whereId($id)->update($data);
 

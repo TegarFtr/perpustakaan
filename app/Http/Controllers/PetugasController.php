@@ -15,7 +15,7 @@ class PetugasController extends Controller
     {
         $data = User::get()->where('role', 'petugas');
         $userRole = auth()->user()->role;
-        return view('admin.menulain.petugas', compact('data', 'userRole'));
+        return view('menulain.petugas', compact('data', 'userRole'));
     }
 
     /**

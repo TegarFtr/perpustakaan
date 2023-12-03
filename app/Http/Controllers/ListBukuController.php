@@ -19,7 +19,7 @@ class ListBukuController extends Controller
             ? Buku::where('judul', 'LIKE', "%$query%")->get()
             : Buku::get();
 
-        return view('admin.usermenu.listBuku', compact('data', 'userRole'));
+        return view('usermenu.listBuku', compact('data', 'userRole'));
     }
 
     /**

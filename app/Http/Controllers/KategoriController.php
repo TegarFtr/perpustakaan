@@ -15,7 +15,7 @@ class KategoriController extends Controller
     {
         $data = Kategori::get();
         $userRole = auth()->user()->role;
-        return view('admin.mainmenu.katalog.kategoriBuku', compact('data', 'userRole'));
+        return view('mainmenu.katalog.kategoriBuku', compact('data', 'userRole'));
     }
 
     /**

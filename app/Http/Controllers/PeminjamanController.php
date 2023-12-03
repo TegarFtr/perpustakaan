@@ -17,7 +17,7 @@ class PeminjamanController extends Controller
         $data = Peminjaman::get();
         $buku = Buku::get();
         $userRole = auth()->user()->role;
-        return view('admin.usermenu.pinjam', compact('data', 'buku', 'userRole'));
+        return view('usermenu.pinjam', compact('data', 'buku', 'userRole'));
     }
 
     /**
