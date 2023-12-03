@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\CetakController;
 use App\Http\Controllers\DataAnggotaController;
 use App\Http\Controllers\DataBukuController;
 use App\Http\Controllers\KategoriController;
@@ -13,6 +14,8 @@ use App\Models\Buku;
 use App\Models\Peminjaman;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
+
+
 
 Route::middleware(['guest'])->group(function () {
     Route::get('/', [SesiController::class, 'index'])->name('login');
@@ -45,6 +48,8 @@ Route::middleware(['guest'])->group(function () {
             $userRole = auth()->user()->role;
             return view('mainmenu.laporan', compact('userRole'));
         });
+        Route::post('cetak-anggota', [CetakController::class, 'cetakAnggota']);
+        Route::post('cetak-tanggal', [CetakController::class, 'cetakTanggal']);
 
         Route::resource('anggota', DataAnggotaController::class);
         Route::get('rekap-peminjaman', function () {
