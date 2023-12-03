@@ -98,7 +98,9 @@
                                                     <select class="form-control" name="kategori" id="kategori">
                                                         <option value="">Pilih Kategori Buku</option>
                                                         @foreach ($kategori as $k)
-                                                            <option value="{{ $k->nama }}">{{ $k->nama }}</option>
+                                                            <option value="{{ $k->nama }}" {{ $book->kategori == $k->nama ? 'selected' : '' }}>
+                                                                {{ $k->nama }}
+                                                            </option>
                                                         @endforeach
                                                     </select>
                                                 </div>
@@ -107,7 +109,9 @@
                                                     <select class="form-control" name="penerbit" id="penerbit">
                                                         <option value="">Pilih Penerbit Buku</option>
                                                         @foreach ($penerbit as $pen)
-                                                            <option value="{{ $pen->nama }}">{{ $pen->nama }}</option>
+                                                            <option value="{{ $pen->nama }}" {{ $book->penerbit == $pen->nama ? 'selected' : '' }}>
+                                                                {{ $pen->nama }}
+                                                            </option>
                                                         @endforeach
                                                     </select>
                                                 </div>

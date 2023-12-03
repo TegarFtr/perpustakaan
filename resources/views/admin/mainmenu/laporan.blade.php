@@ -48,7 +48,7 @@
                                 <form action="pages/function/Laporan.php?aksi=tgl_pinjam" method="POST" target="_blank">
                                     <div class="form-group">
                                         <label>Tanggal Peminjaman</label>
-                                        <input type="date" class="form-control" name="tgl_pinjam" id="datepicker" placeholder="Silahkan masukan tanggal pinjam" required>
+                                        <input class="form-control" type="text" id="datepicker" name="datepicker" placeholder="Silahkan masukan tanggal peminjaman" readonly>
                                     </div>
                                     <div class=" form-group">
                                         <button type="submit" target="_blank" class="btn btn-primary btn-block">Tampilkan Data</button>
@@ -60,7 +60,7 @@
                     <form action="pages/function/Laporan.php?aksi=tgl_pengembalian" method="POST" target="_blank">
                                 <div class="form-group">
                                     <label>Tanggal Pengembalian</label>
-                                    <input type="date" class="form-control" name="tgl_pengembalian" id="datepicker1" placeholder="Silahkan masukan tanggal pengembalian" required>
+                                    <input class="form-control" type="text" id="datepicker2" name="datepicker" placeholder="Silahkan masukan tanggal pengembalian" readonly>
                                 </div>
                                 <div class="form-group">
                                     <button type="submit" class="btn btn-primary btn-block">Tampilkan Data</button>

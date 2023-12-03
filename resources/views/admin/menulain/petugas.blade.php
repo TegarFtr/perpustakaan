@@ -54,44 +54,45 @@
                     </tr>
                   </thead>
                   <tbody>
+                    @foreach ($data as $val)
                     <tr>
-                        <td>1</td>
-                        <td>183</td>
-                        <td>John Doe</td>
-                        <td>admin</td>
-                        <td>admin</td>
+                        <td>{{ $loop->iteration }}</td>
+                        <td>{{ $val->nis }}</td>
+                        <td>{{ $val->nama }}</td>
+                        <td>{{ $val->username }}</td>
+                        <td>{{ $val->password }}</td>
                         <td class="text-center">
-                            <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#modalEdit"><i class="fa-solid fa-pen-to-square"></i></button>
-                            <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#modalHapus"><i class="fa-solid fa-trash"></i></button>
+                            <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#modalEdit{{ $val->id }}"><i class="fa-solid fa-pen-to-square"></i></button>
+                            <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#modalHapus{{ $val->id }}"><i class="fa-solid fa-trash"></i></button>
                         </td>
                     </tr>
 
                     {{-- Modal Edit --}}
-                    <div class="modal fade" id="modalEdit">
+                    <div class="modal fade" id="modalEdit{{ $val->id }}">
                         <div class="modal-dialog">
                         <div class="modal-content">
                             <div class="modal-header">
                                 <h1 class="modal-title fs-5" id="staticBackdropLabel">Edit Data Anggota</h1>
                             </div>
-                            <form action="#" method="post">
+                            <form action="{{ route('petugas.update', $val->id) }}" method="post">
                                 @csrf
                                 @method('PUT')
                                 <div class="modal-body">
                                     <div class="mb-3">
                                         <label for="nis" class="form-label">ID Petugas</label>
-                                        <input type="text" class="form-control" id="nis" name="nis" value="183" placeholder="Masukkan ID Petugas" />
+                                        <input type="text" class="form-control" id="nis" name="nis" value="{{ $val->nis }}" placeholder="Masukkan NIS" />
                                     </div>
                                     <div class="mb-3">
                                         <label for="nama" class="form-label">Nama</label>
-                                        <input type="text" class="form-control" id="nama" name="nama" value="John Doe" placeholder="Masukkan Nama" />
+                                        <input type="text" class="form-control" id="nama" name="nama" value="{{ $val->nama }}" placeholder="Masukkan Nama" />
                                     </div>
                                     <div class="mb-3">
                                         <label for="username" class="form-label">Username</label>
-                                        <input type="text"  class="form-control" id="username" name="username" value="admin" placeholder="Masukkan Username"/>
+                                        <input type="text"  class="form-control" id="username" name="username" value="{{ $val->username }}" placeholder="Masukkan Username"/>
                                     </div>
                                     <div class="mb-3">
-                                        <label for="password" class="form-label">Password</label>
-                                        <input type="text"  class="form-control" id="password" name="password" value="admin" placeholder="Masukkan Password"/>
+                                        <label for="password" class="form-label">Username</label>
+                                        <input type="text"  class="form-control" id="password" name="password" value="{{ $val->password }}" placeholder="Masukkan Username"/>
                                     </div>
                                 </div>
                                 <div class="modal-footer">
@@ -107,7 +108,7 @@
                     <!-- /.modal -->
 
                     {{-- Modal Hapus --}}
-                    <div class="modal fade" id="modalHapus">
+                    <div class="modal fade" id="modalHapus{{ $val->id }}">
                         <div class="modal-dialog">
                         <div class="modal-content">
                             <div class="modal-header">
@@ -115,11 +116,11 @@
                             </div>
                             <div class="modal-body">
                                 <h5 class="text-center">Apakah anda yakin akan menghapus data ini? <br>
-                                    <span class="text-danger">John Doe - 183</span>
+                                    <span class="text-danger">{{ $val->nama }} - {{ $val->nis }}</span>
                                 </h5>
                             </div>
                             <div class="modal-footer">
-                                <form action="#" method="POST">
+                                <form action="{{ route('petugas.destroy', $val->id) }}" method="POST">
                                     @csrf
                                     @method('DELETE')
                                     <button type="submit" class="btn btn-danger" name="hsimpan">Hapus</button>
@@ -132,6 +133,7 @@
                         <!-- /.modal-dialog -->
                     </div>
                     <!-- /.modal -->
+                    @endforeach
 
                   </tbody>
                 </table>
@@ -149,14 +151,14 @@
                         <div class="modal-dialog">
                         <div class="modal-content">
                             <div class="modal-header">
-                                <h1 class="modal-title fs-5" id="staticBackdropLabel">Form Data Petugas</h1>
+                                <h1 class="modal-title fs-5" id="staticBackdropLabel">Form Data Anggota</h1>
                             </div>
-                            <form action="#" method="post">
+                            <form action="{{ route('petugas.store') }}" method="post">
                                 @csrf
                                 <div class="modal-body">
                                     <div class="mb-3">
                                         <label for="nis" class="form-label">ID Petugas</label>
-                                        <input type="text" class="form-control" id="nis" name="nis" placeholder="Masukkan ID Petugas" />
+                                        <input type="text" class="form-control" id="nis" name="nis" placeholder="Masukkan NIS" />
                                     </div>
                                     <div class="mb-3">
                                         <label for="nama" class="form-label">Nama</label>

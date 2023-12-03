@@ -17,52 +17,37 @@
                     var yy = date.getYear();
                     var year = (yy < 1000) ? yy + 1900 : yy;
                     document.write(thisDay + ', ' + day + ' ' + months[month] + ' ' + year);
-                    //
                 </script>
             </small>
         </h1>
     </section>
-    <div class="container-fluid ">
+    <div class="container-fluid">
         <div class="row">
             <div class="col-12">
                 <div class="card mt-2">
                     <div class="card-header">
                         <h1 class="card-title">List Buku</h1>
                         <div class="card-tools">
-                            <div class="input-group input-group-sm" style="width: 150px;">
-                                <input type="text" name="table_search" class="form-control float-right" placeholder="Search">
+                            <form action="{{ route('list-buku.index') }}" method="get" class="input-group input-group-sm" style="width: 150px;">
+                                <input type="text"  id="searchInput" name="search" class="form-control float-right" placeholder="Search">
                                 <div class="input-group-append">
                                     <button type="submit" class="btn btn-default">
                                         <i class="fas fa-search"></i>
                                     </button>
                                 </div>
-                            </div>
+                            </form>
                         </div>
                     </div>
                     <!-- /.card-header -->
                     <div class="card-body table-responsive p-0" style="height: 680px;">
-                        <div class="row row-cols-1 row-cols-md-6 g-4 ml-1 mr-1">
-                            @foreach ($data as $ls)
-                                <div class="col">
-                                    <div class="card">
-                                    <img src="{{ asset("$ls->image") }}" class="card-img-top" alt="Gambar Buku">
-                                    <div class="card-body">
-                                        <h3 class="card-title"><strong>{{ $ls->judul }}</strong></h3>
-                                        <p class="card-text">{{ $ls->pengarang }}</p>
-                                        <p class="card-stock">Stok : {{ $ls->stok }}</p>
-                                        <a href="#" class="btn btn-secondary">Pinjam</a>
-                                    </div>
-                                    </div>
-                                </div>
-                            @endforeach
+                        <div class="row row-cols-1 row-cols-md-6 g-4 ml-1 mr-1" id="bookList">
+                            @include('admin.usermenu.listBukuItems')
                         </div>
                     </div>
                     <!-- /.card-body -->
-            </div>
-            <!-- /.card -->
+                </div>
+                <!-- /.card -->
             </div>
         </div>
-</div>
+    </div>
 @endsection
-
-

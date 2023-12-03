@@ -96,52 +96,61 @@ class DataBukuController extends Controller
     {
     }
 
-public function update(Request $request, $id)
-{
-    $validator = Validator::make($request->all(), [
-        'judul' => 'required|min:5',
-        'pengarang' => 'required|min:2',
-        'kategori' => 'required',
-        'penerbit' => 'required',
-        'sampul' => "required|unique:users,username, $id",
-        'stock' => 'required',
-    ]);
+    public function update(Request $request, $id)
+    {
+        $validator = Validator::make($request->all(), [
+            'judul' => 'required|min:5',
+            'pengarang' => 'required|min:2',
+            'kategori' => 'required',
+            'penerbit' => 'required',
+            'sampul' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
+            'stock' => 'required',
+        ]);
 
-    if ($validator->fails()) {
-        return redirect()
-            ->back()
-            ->withInput()
-            ->withErrors($validator->errors()->first());
+        if ($validator->fails()) {
+            return redirect()
+                ->back()
+                ->withInput()
+                ->withErrors($validator->errors()->first());
+        }
+
+        $requestData = $request->all();
+
+        // Validate and handle the new image, if provided
+        if ($request->hasFile('sampul')) {
+            $fileName = time() . $request->file('sampul')->getClientOriginalName();
+            $path = $request->file('sampul')->storeAs('images', $fileName, 'public');
+            $requestData["sampul"] = '/storage/' . $path;
+        } else {
+            // If no new image is uploaded, keep the existing image
+            $requestData['sampul'] = Buku::findOrFail($id)->sampul;
+        }
+
+        // Make sure 'stok' field is present in the $requestData array
+        $requestData['stok'] = $requestData['stock'];
+
+        // Remove 'stock' from $requestData if it's not needed in the database
+        unset($requestData['stock']);
+
+        $book = Buku::findOrFail($id);
+
+        // Check if 'sampul' key exists in $requestData before updating 'image'
+        if (isset($requestData['sampul'])) {
+            $book->update([
+                'image' => $requestData['sampul'],
+                'stok' => $requestData['stok'],
+            ]);
+        } else {
+            $book->update([
+                'stok' => $requestData['stok'],
+            ]);
+        }
+
+        // Redirect with a success message
+        return redirect()->route('data-buku.index')->with('success', 'Buku successfully updated!');
     }
 
-    $requestData = $request->all();
 
-    // Validate and keep the existing image
-    if ($request->hasFile('sampul')) {
-        $fileName = time() . $request->file('sampul')->getClientOriginalName();
-        $path = $request->file('sampul')->storeAs('images', $fileName, 'public');
-        $requestData["sampul"] = '/storage/' . $path;
-    } else {
-        // Keep the existing image if no new image is uploaded
-        $requestData['sampul'] = Buku::findOrFail($id)->sampul;
-    }
-
-    // Make sure 'stok' field is present in the $requestData array
-    $requestData['stok'] = $requestData['stock'];
-
-    // Update the 'image' key in $requestData, not 'images'
-    $requestData['image'] = isset($requestData['sampul']) ? $requestData['sampul'] : '';
-
-    // Remove 'stock' from $requestData if it's not needed in the database
-    unset($requestData['stock']);
-    unset($requestData['sampul']);
-
-    $book = Buku::findOrFail($id);
-    $book->update($requestData);
-
-    // Redirect with a success message
-    return redirect()->route('data-buku.index')->with('success', 'Buku successfully updated!');
-}
 
 
 

@@ -48,14 +48,14 @@
                 <div class="col-12 col-sm-6 col-md-3">
                     <div class="small-box bg-success">
                         <div class="inner">
-                        <h3>53</h3>
+                        <h3>{{ $totalBuku }}</h3>
 
                         <p>Buku</p>
                         </div>
                         <div class="icon">
                         <i class="fa-solid fa-book-open"></i>
                         </div>
-                        <a href="{{ url('/admin/data-buku') }}" class="small-box-footer">
+                        <a href="{{ route('data-buku.index') }}" class="small-box-footer">
                         More info <i class="fas fa-arrow-circle-right"></i>
                         </a>
                     </div>

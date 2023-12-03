@@ -14,6 +14,7 @@
   <link rel="stylesheet" href="{{ asset('AdminLTE') }}/plugins/overlayScrollbars/css/OverlayScrollbars.min.css">
   <!-- Theme style -->
   <link rel="stylesheet" href="{{ asset('AdminLTE') }}/dist/css/adminlte.min.css">
+  <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
 </head>
 <body class="hold-transition dark-mode sidebar-mini layout-fixed layout-navbar-fixed layout-footer-fixed">
 <div class="wrapper">
@@ -297,7 +298,7 @@
             </a>
           </li>
           <li class="nav-item">
-            <a href="{{ url('/admin/petugas') }}" class="nav-link @yield('activeAdmin')">
+            <a href="{{ url('petugas') }}" class="nav-link @yield('activeAdmin')">
               <i class="nav-icon fas fa-user"></i>
               <p>
                 Petugas
@@ -386,6 +387,26 @@
 <script src="{{ asset('AdminLTE') }}/plugins/flot/plugins/jquery.flot.resize.js"></script>
 <!-- FLOT PIE PLUGIN - also used to draw donut charts -->
 <script src="{{ asset('AdminLTE') }}/plugins/flot/plugins/jquery.flot.pie.js"></script>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <script>
+        $(function() {
+            $("#datepicker").datepicker({
+                dateFormat: 'yy-mm-dd',
+                showButtonPanel: true,
+                changeMonth: true,
+                changeYear: true,
+                yearRange: "-100:+0",
+            });
 
+            $("#datepicker2").datepicker({
+                dateFormat: 'yy-mm-dd',
+                showButtonPanel: true,
+                changeMonth: true,
+                changeYear: true,
+                yearRange: "-100:+0",
+            });
+        });
+    </script>
 </body>
 </html>

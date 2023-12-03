@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Buku;
 use App\Models\Kategori;
 use App\Models\Penerbit;
 use App\Models\User;
@@ -13,7 +14,8 @@ class AdminController extends Controller
 {
     public function index(){
         $totalAnggota = User::count(); // Get the total count of users
-        return view('admin.mainmenu.dashboard', compact('totalAnggota'));
+        $totalBuku = Buku::count();
+        return view('admin.mainmenu.dashboard', compact('totalAnggota', 'totalBuku'));
     }
 
 }
