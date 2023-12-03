@@ -39,24 +39,29 @@
               <div class="card-body">
                 <div class="tab-content" id="custom-tabs-four-tabContent">
                   <div class="tab-pane fade show active" id="custom-tabs-four-home" role="tabpanel" aria-labelledby="custom-tabs-four-home-tab">
-                        <form action="#" method="post">
+                        <form action="{{ route('peminjaman.store') }}" method="post" enctype="multipart/form-data">
                                 @csrf
                                 <div class="modal-body">
                                     <div class="mb-3">
                                         <label for="peminjam" class="form-label">Nama Peminjam</label>
-                                        <input type="text" class="form-control" id="peminjam" name="peminjam" placeholder="Masukkan Nama Peminjam" />
+                                        <input type="text" class="form-control" id="peminjam" name="nama_peminjam" placeholder="Masukkan Nama Peminjam" value="{{ Auth::user()->nama }}" readonly/>
                                     </div>
                                     <div class="mb-3">
                                         <label for="judulbuku" class="form-label">Judul Buku</label>
-                                        <input type="text" class="form-control" id="judulbuku" name="judulbuku" placeholder="Masukkan Judul Buku" />
+                                        <select type="text" class="form-control" id="judulbuku" name="judul" placeholder="Masukkan Judul Buku">
+                                            <option value="">Pilih Buku</option>
+                                            @foreach ($buku as $b)
+                                                <option value="{{ $b->judul }}">{{ $b->judul }}</option>
+                                            @endforeach
+                                        </select>
                                     </div>
                                     <div class="mb-3">
                                         <label for="tanggalpinjam" class="form-label">Tanggal Peminjaman</label>
-                                        <input type="date"  class="form-control" id="tanggalpinjam" name="tanggalpinjam" value="{{date('Y-m-d')}}" disabled/>
+                                        <input type="date"  class="form-control" id="tanggalpinjam" name="tanggal_peminjaman" value="{{date('Y-m-d')}}" readonly/>
                                     </div>
                                     <div class="mb-3">
                                         <label for="tanggalkembali" class="form-label">Batas Peminjaman</label>
-                                        <input type="date"  class="form-control" id="tanggalkembali" name="tanggalkembali" value="{{date('Y-m-d', strtotime('+7 day'))}}" disabled/>
+                                        <input type="date"  class="form-control" id="tanggalkembali" name="batas_peminjaman" value="{{date('Y-m-d', strtotime('+7 day'))}}" readonly/>
                                     </div>
                                 </div>
                                 <div class="modal-footer">
@@ -75,17 +80,38 @@
                                     <th>Batas Peminjaman</th>
                                     <th>Tanggal Pengembalian</th>
                                     <th>Denda</th>
+                                    <th>Status</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr>
-                                    <td>1</td>
-                                    <td>J.K. Rowling</td>
-                                    <td>Harry Potter and the Sorcerer's Stone</td>
-                                    <td>{{date('Y-m-d')}}</td>
-                                    <td>{{date('Y-m-d', strtotime('+7 day'))}}</td>
-                                    <td>-</td>
-                                    <td>0</td>
+                                @foreach ($data as $pj)
+                                    <tr>
+                                        <td>{{ $loop->iteration }}</td>
+                                        <td>{{ $pj->nama_peminjam }}</td>
+                                        <td>{{ $pj->judul }}</td>
+                                        <td>{{ $pj->tanggal_peminjaman }}</td>
+                                        <td>{{ $pj->batas_peminjaman }}</td>
+                                        <td>{{ $pj->tanggal_pengembalian }}</td>
+                                        <td>{{ $pj->denda }}</td>
+                                        <td class="text-center">
+                                            @if($pj->status == 'Terlambat')
+                                                <button type="button" class="btn btn-danger disabled" style="padding: 1px 5px; border-radius: 20px;">
+                                                    {{ $pj->status }}
+                                                </button>
+                                            @elseif($pj->status == 'Dipinjam')
+                                                <button type="button" class="btn btn-primary disabled" style="padding: 1px 5px; border-radius: 20px;">
+                                                    {{ $pj->status }}
+                                                </button>
+                                            @elseif($pj->status == 'Dikembalikan')
+                                                <button type="button" class="btn btn-success disabled" style="padding: 1px 5px; border-radius: 20px;">
+                                                    {{ $pj->status }}
+                                                </button>
+                                            @else
+                                                <!-- Menangani status lain jika diperlukan -->
+                                            @endif
+                                        </td>
+                                    </tr>
+                                @endforeach
                             </tbody>
                         </table>
                   </div>

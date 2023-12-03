@@ -11,7 +11,8 @@ class PenerbitController extends Controller
     // Awal Penerbit Buku
     public function dataPenerbit(){
         $data = Penerbit::get();
-        return view('admin.mainmenu.katalog.penerbit', compact('data'));
+        $userRole = auth()->user()->role;
+        return view('admin.mainmenu.katalog.penerbit', compact('data', 'userRole'));
     }
 
     public function storePenerbit(Request $request){

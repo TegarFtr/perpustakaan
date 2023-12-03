@@ -185,11 +185,8 @@
       <!-- Sidebar Menu -->
       <nav class="mt-2">
         <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
-          <!-- Add icons to the links using the .nav-icon class
-              with font-awesome or any other icon font library -->
-          <li class="nav-header bg-dark">MAIN MENU</li>
-          <li class="nav-item">
-            <a href="{{ url('/admin') }}" class="nav-link @yield('activeDashboard')">
+            <li class="nav-item">
+            <a href="{{ url('dashboard') }}" class="nav-link @yield('activeDashboard')">
               <i class="nav-icon fas fa-home"></i>
               <p>
                 Dashboard
@@ -197,6 +194,8 @@
               </p>
             </a>
           </li>
+        @if(in_array($userRole, ['admin', 'petugas']))
+            <li class="nav-header bg-dark">MAIN MENU</li>
 
           <li class="nav-item @yield('menuMaster')">
             <a href="#" class="nav-link @yield('activeMaster')">
@@ -214,7 +213,7 @@
                 </a>
               </li>
               <li class="nav-item">
-                <a href="{{ url('/admin/peminjaman') }}" class="nav-link @yield('activePinjaman')">
+                <a href="{{ url('rekap-peminjaman') }}" class="nav-link @yield('activePinjaman')">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Data Peminjaman</p>
                 </a>
@@ -253,7 +252,7 @@
           </li>
 
           <li class="nav-item">
-            <a href="{{ url('/admin/laporan') }}" class="nav-link @yield('activeLaporan')">
+            <a href="{{ url('laporan') }}" class="nav-link @yield('activeLaporan')">
               <i class="nav-icon fas fa-book"></i>
               <p>
                 Laporan Perpustakaan
@@ -261,36 +260,34 @@
               </p>
             </a>
           </li>
+        @endif
 
-          <li class="nav-header">MENU USER</li>
-          <li class="nav-item">
-            <a href="{{ url('/admin/pinjam') }}" class="nav-link @yield('activePinjam')">
-              <i class="nav-icon fas fa-file"></i>
-              <p>
-                Peminjaman Buku
-              </p>
-            </a>
-          </li>
-          <li class="nav-item">
-            <a href="{{ url('/admin/kembali') }}" class="nav-link @yield('activeKembali')">
-              <i class="nav-icon fas fa-file"></i>
-              <p>
-                Pengembalian Buku
-              </p>
-            </a>
-          </li>
-          <li class="nav-item">
-            <a href="{{ url('list-buku') }}" class="nav-link @yield('activeListBuku')">
-              <i class="nav-icon fas fa-book"></i>
-              <p>
-                List Buku
-              </p>
-            </a>
-          </li>
+        @if(in_array($userRole, ['admin', 'user']))
+        <li class="nav-header">MENU USER</li>
+            <li class="nav-item">
+                <a href="{{ url('peminjaman') }}" class="nav-link @yield('activePinjam')">
+                    <i class="nav-icon fas fa-file"></i>
+                    <p>Peminjaman Buku</p>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="{{ url('kembali') }}" class="nav-link @yield('activeKembali')">
+                    <i class="nav-icon fas fa-file"></i>
+                    <p>Pengembalian Buku</p>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="{{ url('list-buku') }}" class="nav-link @yield('activeListBuku')">
+                    <i class="nav-icon fas fa-book"></i>
+                    <p>List Buku</p>
+                </a>
+            </li>
+        @endif
 
+        @if(in_array($userRole, ['admin']))
           <li class="nav-header">MENU LAIN</li>
           <li class="nav-item">
-            <a href="{{ url('/admin/profile') }}" class="nav-link @yield('activeProfile')">
+            <a href="{{ url('profile') }}" class="nav-link @yield('activeProfile')">
               <i class="fa-solid nav-icon fa-id-card"></i>
               <p>
                 Profile Aplikasi
@@ -305,6 +302,7 @@
               </p>
             </a>
           </li>
+        @endif
 
           <li class="nav-header">LANJUTAN</li>
           <li class="nav-item">
@@ -333,7 +331,7 @@
                       </div>
                       <div class="modal-footer">
                           <button type="button" data-dismiss="modal" class="btn btn-danger">Batal</button>
-                          <a href="keluar" class="btn btn-primary">Iya, Logout</a>
+                          <a href="{{ url('logout') }}" class="btn btn-primary">Iya, Logout</a>
                       </div>
                   </div>
               </div>

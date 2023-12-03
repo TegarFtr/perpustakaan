@@ -25,10 +25,19 @@
     </div>
     <div class="card-body">
       <p class="login-box-msg">Selamat datang di Halaman Login SIMPUS, pintu gerbang menuju dunia informasi perpustakaan yang terintegrasi dan efisien!. <br>  <b>Silahkan masuk untuk menggunakan SIMPUS</b></p>
-
-      <form action="../../index3.html" method="post">
+        @if ($errors->any())
+            <div class="alert alert-danger">
+                <ul>
+                    @foreach ($errors->all() as $eror)
+                        <li>{{ $eror }}</li>
+                    @endforeach
+                </ul>
+            </div>
+        @endif
+      <form action="" method="post">
+        @csrf
         <div class="input-group mb-3">
-          <input type="text" class="form-control" placeholder="Username">
+          <input type="text" name="username" class="form-control" placeholder="Username" value="{{ old('username') }}">
           <div class="input-group-append">
             <div class="input-group-text">
               <span class="fas fa-user"></span>
@@ -36,7 +45,7 @@
           </div>
         </div>
         <div class="input-group mb-3">
-          <input type="password" class="form-control" placeholder="Password">
+          <input type="password" name="password" class="form-control" placeholder="Password" value="{{ old('password') }}">
           <div class="input-group-append">
             <div class="input-group-text">
               <span class="fas fa-lock"></span>

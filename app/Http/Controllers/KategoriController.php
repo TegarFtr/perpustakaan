@@ -14,7 +14,8 @@ class KategoriController extends Controller
     public function index()
     {
         $data = Kategori::get();
-        return view('admin.mainmenu.katalog.kategoriBuku', compact('data'));
+        $userRole = auth()->user()->role;
+        return view('admin.mainmenu.katalog.kategoriBuku', compact('data', 'userRole'));
     }
 
     /**

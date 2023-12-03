@@ -16,6 +16,7 @@ return new class extends Migration
             $table->integer('nis');
             $table->string('nama');
             $table->string('username')->unique();
+            $table->string('password_login');
             $table->string('password');
             $table->enum('role', ['user', 'petugas', 'admin'])->default('user');
             $table->rememberToken();

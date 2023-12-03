@@ -60,7 +60,7 @@
                         <td>{{ $val->nis }}</td>
                         <td>{{ $val->nama }}</td>
                         <td>{{ $val->username }}</td>
-                        <td>{{ $val->password }}</td>
+                        <td>{{ $val->password_login }}</td>
                         <td class="text-center">
                             <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#modalEdit{{ $val->id }}"><i class="fa-solid fa-pen-to-square"></i></button>
                             <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#modalHapus{{ $val->id }}"><i class="fa-solid fa-trash"></i></button>

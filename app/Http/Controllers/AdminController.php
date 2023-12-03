@@ -15,7 +15,8 @@ class AdminController extends Controller
     public function index(){
         $totalAnggota = User::count(); // Get the total count of users
         $totalBuku = Buku::count();
-        return view('admin.mainmenu.dashboard', compact('totalAnggota', 'totalBuku'));
+        $userRole = auth()->user()->role;
+        return view('admin.mainmenu.dashboard', compact('totalAnggota', 'totalBuku', 'userRole'));
     }
 
 }

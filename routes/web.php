@@ -5,33 +5,63 @@ use App\Http\Controllers\DataAnggotaController;
 use App\Http\Controllers\DataBukuController;
 use App\Http\Controllers\KategoriController;
 use App\Http\Controllers\ListBukuController;
+use App\Http\Controllers\PeminjamanController;
 use App\Http\Controllers\PenerbitController;
 use App\Http\Controllers\PetugasController;
+use App\Http\Controllers\SesiController;
+use App\Models\Peminjaman;
 use Illuminate\Support\Facades\Route;
 
+Route::middleware(['guest'])->group(function () {
+    Route::get('/', [SesiController::class, 'index'])->name('login');
+    Route::post('/', [SesiController::class, 'login']);
+});
 
-Route::get('/login', function () { return view('login'); });
-Route::get('/registrasi', function () { return view('register'); });
 
-// Admin
-// Main Menu
-Route::get('/admin', [AdminController::class, 'index'])->name('index');
-Route::get('/admin/laporan', function () { return view('admin.mainmenu.laporan'); });
-// Master Data
-Route::resource('anggota', DataAnggotaController::class);
-Route::get('/admin/peminjaman', function () { return view('admin.mainmenu.masterdata.peminjaman'); });
-// Katalog Buku
-Route::resource('data-buku', DataBukuController::class);
-Route::resource('kategori', KategoriController::class);
-Route::resource('penerbit', PenerbitController::class);
+    // Logout route
+    Route::get('/logout', [SesiController::class, 'logout']);
 
-// Menu User
-Route::get('/admin/pinjam', function () { return view('admin.usermenu.pinjam'); });
-Route::get('/admin/kembali', function () { return view('admin.usermenu.kembali'); });
-Route::resource('list-buku', ListBukuController::class);
+    // Redirect /home to /dashboard
+    Route::get('/home', function () {
+        return redirect('dashboard');
+    });
+    Route::get('dashboard', [AdminController::class, 'index']);
 
-// Menu Lain
-Route::get('/admin/profile', function () { return view('admin.menulain.profile'); });
-Route::resource('petugas', PetugasController::class);
-// Akhir Admin
+    // Admin routes
+    Route::middleware(['auth','admin'])->group(function () {
+        Route::get('profile', function () {
+            $userRole = auth()->user()->role;
+            return view('admin.menulain.profile', compact('userRole'));
+        });
+        Route::resource('petugas', PetugasController::class);
+    });
 
+    // Petugas routes
+    Route::middleware(['auth','petugas'])->group(function () {
+
+        Route::get('laporan', function () {
+            $userRole = auth()->user()->role;
+            return view('admin.mainmenu.laporan', compact('userRole'));
+        });
+
+        Route::resource('anggota', DataAnggotaController::class);
+        Route::get('rekap-peminjaman', function () {
+            $data = Peminjaman::get();
+            $userRole = auth()->user()->role;
+            return view('admin.mainmenu.masterdata.peminjaman', compact('data', 'userRole'));
+        });
+
+        Route::resource('data-buku', DataBukuController::class);
+        Route::resource('kategori', KategoriController::class);
+        Route::resource('penerbit', PenerbitController::class);
+    });
+
+    // User routes
+    Route::middleware(['auth','user'])->group(function () {
+        Route::resource('peminjaman', PeminjamanController::class);
+        Route::get('kembali', function () {
+            $userRole = auth()->user()->role;
+            return view('admin.usermenu.kembali', compact('userRole'));
+        });
+        Route::resource('list-buku', ListBukuController::class);
+    });

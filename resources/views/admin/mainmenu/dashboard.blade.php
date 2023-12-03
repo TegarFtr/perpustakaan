@@ -23,6 +23,7 @@
         </h1>
     </section>
 
+    @if(in_array($userRole, ['admin', 'petugas']))
     <!-- Main content -->
     <section class="content">
         <div class="container-fluid">
@@ -107,4 +108,21 @@
         </div><!--/. container-fluid -->
     </section>
     <!-- /.content -->
+    @endif
+
+    @if(in_array($userRole, ['admin', 'user', 'petugas']))
+    <!-- Main content -->
+    <section class="content">
+        <div class="alert alert-secondary" style="color: #383d41; background-color: #e2e3e5; border-color: #d6d8db;">
+            Selamat datang <b>{{ Auth::user()->nama }}</b> di Perpustakaan SMAN Pati.
+        </div>
+        <!-- -->
+
+        <img src="{{ asset('AdminLTE') }}/dist/img/tutwuri.png" width="120px" height="120px" style="display: block; margin-left: auto; margin-right: auto; margin-top: 100px;">
+
+        <h1 class="text-center">Perpustakaan SMAN Pati</h1>
+        <p class="text-center">Alamat : Jl. P. Sudirman No.24, Puri, Plangitan, Kec. Pati, Kabupaten Pati, Jawa Tengah</p>
+    </section>
+    <!-- /.content -->
+    @endif
 @endsection

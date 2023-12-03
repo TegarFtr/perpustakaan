@@ -188,7 +188,7 @@
               with font-awesome or any other icon font library -->
           <li class="nav-header bg-dark">MAIN MENU</li>
           <li class="nav-item">
-            <a href="{{ url('/petugas') }}" class="nav-link @yield('activeDashboard')">
+            <a href="{{ url('dashboard') }}" class="nav-link @yield('activeDashboard')">
               <i class="nav-icon fas fa-home"></i>
               <p>
                 Dashboard
@@ -207,13 +207,13 @@
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="{{ url('/petugas/anggota') }}" class="nav-link @yield('activeAnggota')">
+                <a href="{{ url('/anggota') }}" class="nav-link @yield('activeAnggota')">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Data Anggota</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="{{ url('/petugas/peminjaman') }}" class="nav-link @yield('activePinjaman')">
+                <a href="{{ url('rekap-peminjaman') }}" class="nav-link @yield('activePinjaman')">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Data Peminjaman</p>
                 </a>
@@ -231,19 +231,19 @@
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="{{ url('/petugas/data-buku') }}" class="nav-link @yield('activeDataBuku')">
+                <a href="{{ url('data-buku') }}" class="nav-link @yield('activeDataBuku')">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Data Buku</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="{{ url('/petugas/kategori-buku') }}" class="nav-link @yield('activeKategoriBuku')">
+                <a href="{{ url('kategori') }}" class="nav-link @yield('activeKategoriBuku')">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Kategori Buku</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="{{ url('/petugas/penerbit') }}" class="nav-link @yield('activePenerbit')">
+                <a href="{{ url('penerbit') }}" class="nav-link @yield('activePenerbit')">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Data Penerbit</p>
                 </a>
@@ -252,7 +252,7 @@
           </li>
 
           <li class="nav-item">
-            <a href="{{ url('/petugas/laporan') }}" class="nav-link @yield('activeLaporan')">
+            <a href="{{ url('laporan') }}" class="nav-link @yield('activeLaporan')">
               <i class="nav-icon fas fa-book"></i>
               <p>
                 Laporan Perpustakaan

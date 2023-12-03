@@ -14,11 +14,12 @@ class ListBukuController extends Controller
     public function index(Request $request)
     {
         $query = $request->input('search');
+        $userRole = auth()->user()->role;
         $data = $query
             ? Buku::where('judul', 'LIKE', "%$query%")->get()
             : Buku::get();
 
-        return view('admin.usermenu.listBuku', compact('data'));
+        return view('admin.usermenu.listBuku', compact('data', 'userRole'));
     }
 
     /**
