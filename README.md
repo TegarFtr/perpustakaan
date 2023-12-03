@@ -1,8 +1,8 @@
-<h1 align="center">Laravel 8 Perpustakaan</h1>
+<h1 align="center">Laravel 10 Perpustakaan</h1>
 
 ## Author
 
-Laravel 8 pepustakaan dibuat oleh :
+Laravel 10 pepustakaan dibuat oleh :
 
 - TEGAR FATUR RACHMAN                ( 220533602991 )
 - RIVAN ADI KURNIAWAN                ( 220533600710 )
