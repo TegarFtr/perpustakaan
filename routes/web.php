@@ -9,6 +9,7 @@ use App\Http\Controllers\ListBukuController;
 use App\Http\Controllers\PeminjamanController;
 use App\Http\Controllers\PenerbitController;
 use App\Http\Controllers\PetugasController;
+use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\SesiController;
 use App\Models\Buku;
 use App\Models\Peminjaman;
@@ -38,10 +39,7 @@ Route::middleware(['guest'])->group(function () {
 
     // Admin routes
     Route::middleware(['auth','admin'])->group(function () {
-        Route::get('profile', function () {
-            $userRole = auth()->user()->role;
-            return view('menulain.profile', compact('userRole'));
-        });
+        Route::resource('profile', ProfileController::class);
         Route::resource('petugas', PetugasController::class);
     });
 

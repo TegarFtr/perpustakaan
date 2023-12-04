@@ -32,24 +32,26 @@
                         <h3 class="card-title" style="font-family: 'Quicksand', sans-serif; font-weight: bold;">Edit Identitas Applikasi</h3>
                     </div>
                     <!-- /.card-header -->
-                    <form action="pages/function/Identitas.php?aksi=edit" method="POST" enctype="multipart/form-data">
+                    <form action="{{ route('profile.update', $data->first()->id) }}" method="POST" enctype="multipart/form-data">
+                        @csrf
+                        @method('PUT')
                         <div class="card-body">
                             <input name="id_identitas" type="hidden" value="1">
                             <div class="form-group">
                                 <label for="nameApp">Nama Applikasi</label>
-                                <input type="text" class="form-control" id="nameApp" value="Perpustakaan SMAN Pati" name="App" required>
+                                <input type="text" class="form-control" id="nameApp" value="{{ $data->first()->nama }}" name="nama" required>
                             </div>
                             <div class="form-group">
                                 <label for="alamaT">Alamat Lengkap</label>
-                                <textarea class="form-control" style="height: 80px; resize: none;" name="Alamat" required>Jl. P. Sudirman No.24, Puri, Plangitan, Kec. Pati, Kabupaten Pati, Jawa Tengah</textarea>
+                                <textarea class="form-control" style="height: 80px; resize: none;" name="alamat" required>{{ $data->first()->alamat }}</textarea>
                             </div>
                             <div class="form-group">
                                 <label for="emaiL">Email</label>
-                                <input type="email" class="form-control" id="emaiL" value="perpussmanpati@e-perpus.com" name="Email" required>
+                                <input type="email" class="form-control" id="emaiL" value="{{ $data->first()->email }}" name="email" required>
                             </div>
                             <div class="form-group">
                                 <label for="telP">Nomor Telpon</label>
-                                <input type="number" class="form-control" id="telP" value="6281221545666" name="Telp" required>
+                                <input type="number" class="form-control" id="telP" value="{{ $data->first()->telepon }}" name="telepon" required>
                             </div>
                         </div>
                         <!-- /.card-body -->
@@ -72,10 +74,10 @@
                         <!-- Animasi -->
                         <!--<lottie-player src="../../assets/json/3151-books.json" background="transparent" speed="1" style="width: 125px; height: 125px; display: block; margin-left: auto; margin-right: auto; margin-top: -50px; margin-bottom: 15px;" loop autoplay></lottie-player>
                         -->
-                        <p style="font-weight: bold;">Nama Applikasi : Perpustakaan SMAN Pati</p>
-                        <p style="font-weight: bold;">Alamat : Jl. P. Sudirman No.24, Puri, Plangitan, Kec. Pati, Kabupaten Pati, Jawa Tengah</p>
-                        <p style="font-weight: bold;">Email : perpussmanpati@e-perpus.com</p>
-                        <p style="font-weight: bold;">Nomor Telepon : 6281221545666</p>
+                        <p style="font-weight: bold;">Nama Applikasi : {{ $data->first()->nama }}</p>
+                        <p style="font-weight: bold;">Alamat : {{ $data->first()->alamat }}</p>
+                        <p style="font-weight: bold;">Email : {{ $data->first()->email }}</p>
+                        <p style="font-weight: bold;">Nomor Telepon : {{ $data->first()->telepon }}</p>
                     </div>
                     <!-- /.box-body -->
                 </div>
