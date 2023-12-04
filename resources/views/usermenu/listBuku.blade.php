@@ -100,4 +100,31 @@
             </div>
         </div>
     </div>
+
+    {{-- @push('scripts')
+        <script>
+            $(document).ready(function () {
+                $('.btn-pinjam').on('click', function () {
+                    var judul = $(this).data('judul');
+
+                    // Simpan judul ke sesi
+                    $.ajax({
+                        url: "{{ route('list-buku.save-to-session') }}",
+                        type: "POST",
+                        data: {
+                            _token: "{{ csrf_token() }}",
+                            judul: judul
+                        },
+                        success: function(response) {
+                            // Redirect ke halaman peminjaman
+                            window.location.href = "{{ route('peminjaman.index') }}";
+                        },
+                        error: function(error) {
+                            console.log(error);
+                        }
+                    });
+                });
+            });
+        </script>
+    @endpush --}}
 @endsection

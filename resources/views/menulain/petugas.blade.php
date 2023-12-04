@@ -81,7 +81,7 @@
                                 <div class="modal-body">
                                     <div class="mb-3">
                                         <label for="nis" class="form-label">ID Petugas</label>
-                                        <input type="text" class="form-control" id="nis" name="nis" value="{{ $val->nis }}" placeholder="Masukkan NIS" />
+                                        <input type="text" class="form-control" id="nis" name="nis" value="{{ $val->nis }}" placeholder="Masukkan ID Petugas" />
                                     </div>
                                     <div class="mb-3">
                                         <label for="nama" class="form-label">Nama</label>
@@ -92,8 +92,8 @@
                                         <input type="text"  class="form-control" id="username" name="username" value="{{ $val->username }}" placeholder="Masukkan Username"/>
                                     </div>
                                     <div class="mb-3">
-                                        <label for="password" class="form-label">Username</label>
-                                        <input type="text"  class="form-control" id="password" name="password" value="{{ $val->password }}" placeholder="Masukkan Username"/>
+                                        <label for="password" class="form-label">Password</label>
+                                        <input type="text"  class="form-control" id="password" name="password" value="{{ $val->password_login }}" placeholder="Masukkan Username"/>
                                     </div>
                                 </div>
                                 <div class="modal-footer">
@@ -159,7 +159,7 @@
                                 <div class="modal-body">
                                     <div class="mb-3">
                                         <label for="nis" class="form-label">ID Petugas</label>
-                                        <input type="text" class="form-control" id="nis" name="nis" placeholder="Masukkan NIS" />
+                                        <input type="text" class="form-control" id="nis" name="nis" placeholder="Masukkan ID Petugas" />
                                     </div>
                                     <div class="mb-3">
                                         <label for="nama" class="form-label">Nama</label>

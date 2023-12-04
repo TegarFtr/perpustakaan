@@ -148,7 +148,7 @@
                                         </div>
                                         <div class="modal-body">
                                             <h5 class="text-center">Apakah anda yakin akan menghapus data ini? <br>
-                                                <span class="text-danger">{{ $book->judul }}</span>
+                                                <span class="text-danger">{{ $book->judul }} - {{ $book->pengarang }}</span>
                                             </h5>
                                         </div>
                                         <div class="modal-footer">

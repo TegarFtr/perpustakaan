@@ -95,8 +95,8 @@
                                         <input type="text"  class="form-control" id="username" name="username" value="{{ $val->username }}" placeholder="Masukkan Username"/>
                                     </div>
                                     <div class="mb-3">
-                                        <label for="password" class="form-label">Username</label>
-                                        <input type="text"  class="form-control" id="password" name="password" value="{{ $val->password }}" placeholder="Masukkan Username"/>
+                                        <label for="password" class="form-label">Password</label>
+                                        <input type="text"  class="form-control" id="password" name="password" value="{{ $val->password_login }}" placeholder="Masukkan Username"/>
                                     </div>
                                 </div>
                                 <div class="modal-footer">
