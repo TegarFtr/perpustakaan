@@ -16,6 +16,7 @@ Laravel 10 pepustakaan dibuat oleh :
 - CRUD Buku
 - CRUD Penerbit
 - Melakukan peminjaman buku
+- Melakukan pengembalian buku
 - Menggunakan admin LTE
 - Dan lain-lain
 
