@@ -20,6 +20,10 @@ use Illuminate\Support\Facades\Route;
 Route::middleware(['guest'])->group(function () {
     Route::get('/', [SesiController::class, 'index'])->name('login');
     Route::post('/', [SesiController::class, 'login']);
+    Route::get('registrasi', function(){
+        return view('register');
+    })->name('register');
+    Route::post('registrasi-akun', [SesiController::class, 'registrasi']);
 });
 
 

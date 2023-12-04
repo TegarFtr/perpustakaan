@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
 use Illuminate\Contracts\Session\Session;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Validator;
 
 class SesiController extends Controller
 {
@@ -31,6 +33,38 @@ class SesiController extends Controller
         }else {
             return redirect('')->withErrors('Username atau Password tidak sesuai.')->withInput();
         }
+    }
+
+    public function registrasi(Request $request){
+        // Check if password1 matches password2
+        if ($request->password1 !== $request->password2) {
+            return redirect()->back()->withInput()->withErrors(['password2' => 'The password confirmation does not match.']);
+        }
+
+        $validator = Validator::make($request->all(), [
+            'nis' => 'required|min:5',
+            'nama' => 'required|min:2',
+            'username' => 'required|unique:users,username',
+            'password1' => 'required'
+        ]);
+
+        if ($validator->fails()) {
+            return redirect()
+                ->back()
+                ->withInput()
+                ->withErrors($validator->errors()->first()); // Passing the first error message as a string
+        }
+
+        $data['nis'] = $request->nis;
+        $data['nama'] = $request->nama;
+        $data['username'] = $request->username;
+        $data['password_login'] = $request->password1;
+        $data['password'] = bcrypt($request->password1);
+
+        User::create($data);
+
+        // Redirect with a success message
+        return redirect()->route('anggota.index')->with('success', 'Anggota successfully added!');
     }
 
     public function logout(){

@@ -70,7 +70,7 @@
       </form>
       <p class="text-center mt-3">- ATAU -</p>
       <div class="social-auth-links text-center text-white mt-2 mb-3">
-        <a href="{{ url('/registrasi') }}" class="btn btn-block btn-warning" style="color: white">
+        <a href="{{ url('registrasi') }}" class="btn btn-block btn-warning" style="color: white">
           <i class="fas fa-user-plus"></i> Daftar Untuk Menjadi Member
         </a>
       </div>

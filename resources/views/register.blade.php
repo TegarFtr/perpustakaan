@@ -25,9 +25,10 @@
     <div class="card-body">
       <p class="login-box-msg">Selamat datang di Halaman Registrasi SIMPUS, tempat pembuka pintu akses ke dunia perpustakaan terhubung dan inovatif! Buat akun pribadi Anda dengan mudah untuk mengakses layanan SIMPUS dengan cepat.</p>
 
-      <form action="../../index.html" method="post">
+      <form action="{{ url('registrasi-akun') }}" method="post">
+        @csrf
         <div class="input-group mb-3">
-          <input type="text" class="form-control" placeholder="Masukkan Nama Lengkap">
+          <input type="text" class="form-control" name="nama" placeholder="Masukkan Nama Lengkap">
           <div class="input-group-append">
             <div class="input-group-text">
               <span class="fas fa-user"></span>
@@ -35,7 +36,7 @@
           </div>
         </div>
         <div class="input-group mb-3">
-          <input type="text" class="form-control" placeholder="Masukkan NIS">
+          <input type="text" class="form-control" name="nis" placeholder="Masukkan NIS">
           <div class="input-group-append">
             <div class="input-group-text">
               <span class="fas fa-user"></span>
@@ -43,7 +44,7 @@
           </div>
         </div>
         <div class="input-group mb-3">
-          <input type="text" class="form-control" placeholder="Masukkan Username">
+          <input type="text" class="form-control" name="username" placeholder="Masukkan Username">
           <div class="input-group-append">
             <div class="input-group-text">
               <span class="fas fa-user"></span>
@@ -51,7 +52,7 @@
           </div>
         </div>
         <div class="input-group mb-3">
-          <input type="password" class="form-control" placeholder="Masukkan Password">
+          <input type="password" class="form-control" name="password1" placeholder="Masukkan Password">
           <div class="input-group-append">
             <div class="input-group-text">
               <span class="fas fa-lock"></span>
@@ -59,7 +60,7 @@
           </div>
         </div>
         <div class="input-group mb-3">
-          <input type="password" class="form-control" placeholder="Masukkan Ulang password">
+          <input type="password" class="form-control" name="password2" placeholder="Masukkan Ulang password">
           <div class="input-group-append">
             <div class="input-group-text">
               <span class="fas fa-lock"></span>
@@ -76,7 +77,7 @@
       </form>
       <p class="text-center mt-3">- ATAU -</p>
       <div class="social-auth-links text-center">
-        <a href="{{ url('/login') }}" class="btn btn-block btn-success">
+        <a href="{{ route('login') }}" class="btn btn-block btn-success">
             <i class="fas fa-arrow-circle-right"></i>
             Sudah menjadi member ? Masuk
         </a>
