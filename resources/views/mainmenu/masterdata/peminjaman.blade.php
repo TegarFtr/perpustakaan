@@ -2,6 +2,7 @@
 @section('menuMaster', 'menu-open')
 @section('activeMaster', 'active')
 @section('activePinjaman', 'active')
+@section('title', 'Simpus | Data Peminjaman')
 
 @section('content')
     <section class="content-header">

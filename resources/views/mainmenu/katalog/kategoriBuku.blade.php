@@ -2,6 +2,7 @@
 @section('menuKatalog', 'menu-open')
 @section('activeKatalog', 'active')
 @section('activeKategoriBuku', 'active')
+@section('title', 'Simpus | Kategori Buku')
 
 @section('content')
     <section class="content-header">

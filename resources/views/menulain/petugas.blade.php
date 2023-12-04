@@ -1,5 +1,6 @@
 @extends('layouts.master')
 @section('activeAdmin', 'active')
+@section('title', 'Simpus | Petugas')
 
 @section('content')
     <section class="content-header">

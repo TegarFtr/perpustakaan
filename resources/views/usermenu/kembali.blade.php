@@ -1,5 +1,6 @@
 @extends('layouts.master')
 @section('activeKembali', 'active')
+@section('title', 'Simpus | Pengembalian Buku')
 
 @section('content')
     <section class="content-header">

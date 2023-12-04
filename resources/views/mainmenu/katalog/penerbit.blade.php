@@ -2,6 +2,7 @@
 @section('menuKatalog', 'menu-open')
 @section('activeKatalog', 'active')
 @section('activePenerbit', 'active')
+@section('title', 'Simpus | Penerbit')
 
 @section('content')
     <section class="content-header">

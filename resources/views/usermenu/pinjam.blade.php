@@ -1,5 +1,6 @@
 @extends('layouts.master')
 @section('activePinjam', 'active')
+@section('title', 'Simpus | Peminjaman Buku')
 
 @section('content')
     <section class="content-header">

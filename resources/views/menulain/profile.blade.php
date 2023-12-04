@@ -1,5 +1,6 @@
 @extends('layouts.master')
 @section('activeProfile', 'active')
+@section('title', 'Simpus | Profile')
 
 @section('content')
   <section class="content-header">

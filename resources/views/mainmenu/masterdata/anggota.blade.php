@@ -2,6 +2,7 @@
 @section('menuMaster', 'menu-open')
 @section('activeMaster', 'active')
 @section('activeAnggota', 'active')
+@section('title', 'Simpus | Data Anggota')
 
 
 @section('content')

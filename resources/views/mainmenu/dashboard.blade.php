@@ -1,5 +1,6 @@
 @extends('layouts.master')
 @section('activeDashboard', 'active')
+@section('title', 'Simpus | Dashboard')
 
 @section('content')
     <section class="content-header">
