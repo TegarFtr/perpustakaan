@@ -13,6 +13,7 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\SesiController;
 use App\Models\Buku;
 use App\Models\Peminjaman;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -54,9 +55,13 @@ Route::middleware(['guest'])->group(function () {
         Route::post('cetak-tanggal', [CetakController::class, 'cetakTanggal']);
 
         Route::resource('anggota', DataAnggotaController::class);
-        Route::get('rekap-peminjaman', function () {
-            $data = Peminjaman::get();
+        Route::get('rekap-peminjaman', function (Request $request) {
+            $query = $request->input('search');
+            $peminjaman = Peminjaman::get();
             $userRole = auth()->user()->role;
+            $data = $query
+            ? Peminjaman::where('nama_peminjam', 'LIKE', "%$query%")->get()
+            : Peminjaman::get();
             return view('mainmenu.masterdata.peminjaman', compact('data', 'userRole'));
         });
 

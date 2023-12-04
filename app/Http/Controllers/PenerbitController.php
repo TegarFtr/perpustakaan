@@ -11,10 +11,14 @@ class PenerbitController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
-        $data = Penerbit::get();
+        $query = $request->input('search');
+        $penerbit = Penerbit::get();
         $userRole = auth()->user()->role;
+        $data = $query
+            ? Penerbit::where('nama', 'LIKE', "%$query%")->get()
+            : Penerbit::get();
         return view('mainmenu.katalog.penerbit', compact('data', 'userRole'));
     }
 

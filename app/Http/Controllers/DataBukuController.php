@@ -15,12 +15,16 @@ class DataBukuController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
-        $data = Buku::get();
+        $query = $request->input('search');
+        $buku = Buku::get();
         $penerbit = Penerbit::get();
         $kategori = Kategori::get();
         $userRole = auth()->user()->role;
+        $data = $query
+            ? Buku::where('judul', 'LIKE', "%$query%")->get()
+            : Buku::get();
         return view('mainmenu.katalog.dataBuku', compact('data', 'penerbit', 'kategori', 'userRole'));
     }
 

@@ -11,10 +11,14 @@ class KategoriController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
-        $data = Kategori::get();
+        $query = $request->input('search');
+        $kategori = Kategori::get();
         $userRole = auth()->user()->role;
+        $data = $query
+            ? Kategori::where('nama', 'LIKE', "%$query%")->get()
+            : Kategori::get();
         return view('mainmenu.katalog.kategoriBuku', compact('data', 'userRole'));
     }
 

@@ -71,7 +71,7 @@
                 <div class="col-12 col-sm-6 col-md-3" >
                     <div class="small-box bg-warning" >
                         <div class="inner">
-                        <h3 style="color: white">44</h3>
+                        <h3 style="color: white">{{ $totalPeminjam }}</h3>
 
                         <p style="color: white">Peminjaman</p>
                         </div>
@@ -88,7 +88,7 @@
                 <div class="col-12 col-sm-6 col-md-3">
                     <div class="small-box bg-danger">
                         <div class="inner text-white">
-                        <h3>65</h3>
+                        <h3>{{ $totalPengembalian }}</h3>
 
                         <p>Pengembalian</p>
                         </div>

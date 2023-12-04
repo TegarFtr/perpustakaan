@@ -11,10 +11,14 @@ class DataAnggotaController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
-        $data = User::get()->where('role', 'user');
+        $query = $request->input('search');
+        $anggota = User::get()->where('role', 'user');
         $userRole = auth()->user()->role;
+        $data = $query
+            ? User::where('nama', 'LIKE', "%$query%")->get()
+            : User::get();
         return view('mainmenu.masterdata.anggota', compact('data', 'userRole'));
     }
 
