@@ -108,20 +108,17 @@ class PeminjamanController extends Controller
         // Hitung selisih hari
         $tanggalPengembalian = \Carbon\Carbon::parse($request->tanggal_pengembalian);
         $batasPeminjaman = \Carbon\Carbon::parse($peminjaman->batas_peminjaman);
-        $selisihHari = $tanggalPengembalian->diffInDays($batasPeminjaman);
 
+        // Hitung selisih hari
+        $selisihHari = $batasPeminjaman->diffInDays($tanggalPengembalian, false); // false untuk mendeteksi selisih minus
         // Hitung denda jika terlambat
         $denda = $selisihHari > 0 ? $selisihHari * 1000 : 0;
 
         // Simpan data pengembalian
-        $peminjaman->status = $selisihHari > 0 ? 'Terlambat' : 'Dikembalikan';
-        $peminjaman->tanggal_pengembalian = $request->tanggal_pengembalian;
-        $peminjaman->denda = $denda;
-        $peminjaman->save();
-
         $data['status'] = $selisihHari > 0 ? 'Terlambat' : 'Dikembalikan';
         $data['tanggal_pengembalian'] = $request->tanggal_pengembalian;
         $data['denda'] = $denda;
+
 
         Peminjaman::whereId($id)->update($data);
 
