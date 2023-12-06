@@ -95,6 +95,9 @@ php artisan key:generate
 ```bash
 php artisan migrate --seed
 ```
+```bash
+php artisan db:seed --class=UserSeeder
+```
 
 ## Buat Storage Link
 
