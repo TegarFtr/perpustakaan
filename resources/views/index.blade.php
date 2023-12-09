@@ -67,11 +67,11 @@
     <div class="container">
       <div class="row">
         <div class="col-lg-6 d-flex flex-column justify-content-center">
-          <h1 data-aos="fade-up">Sistem Perpustakaan</h1>
-          <h2 data-aos="fade-up" data-aos-delay="400">Sistem Perpustakaan memudahkan dalam pengorganisasian buku di area sekolah</h2>
+          <h1 data-aos="fade-up">SIMPUS</h1>
+          <h2 data-aos="fade-up" data-aos-delay="400">Sistem Perpustakaan SMKN 1 ....</h2>
           <div data-aos="fade-up" data-aos-delay="600">
             <div class="text-center text-lg-start">
-              <a href="{{ 'index' }}" class="btn-get-started scrollto d-inline-flex align-items-center justify-content-center align-self-center">
+              <a href="{{ url('') }}" class="btn-get-started scrollto d-inline-flex align-items-center justify-content-center align-self-center">
                 <span>Get Started</span>
                 <i class="bi bi-arrow-right"></i>
               </a>
@@ -96,10 +96,8 @@
           <div class="col-lg-6 d-flex flex-column justify-content-center" data-aos="fade-up" data-aos-delay="200">
             <div class="content">
               <h3>Who We Are</h3>
-              <h2>Expedita voluptas omnis cupiditate totam eveniet nobis sint iste. Dolores est repellat corrupti reprehenderit.</h2>
-              <p>
-                Quisquam vel ut sint cum eos hic dolores aperiam. Sed deserunt et. Inventore et et dolor consequatur itaque ut voluptate sed et. Magnam nam ipsum tenetur suscipit voluptatum nam et est corrupti.
-              </p>
+              <h2>SIMPUS SMKN 1 ....</h2>
+              <p>Membangun Masa Depan Melalui Pendidikan</p>
               <div class="text-center text-lg-start">
                 <a href="#" class="btn-read-more d-inline-flex align-items-center justify-content-center align-self-center">
                   <span>Read More</span>
@@ -129,7 +127,7 @@
               <i class="bi bi-emoji-smile"></i>
               <div>
                 <span data-purecounter-start="0" data-purecounter-end="232" data-purecounter-duration="1" class="purecounter"></span>
-                <p>Happy Clients</p>
+                <p>Siswa</p>
               </div>
             </div>
           </div>
@@ -139,7 +137,7 @@
               <i class="bi bi-journal-richtext" style="color: #ee6c20;"></i>
               <div>
                 <span data-purecounter-start="0" data-purecounter-end="521" data-purecounter-duration="1" class="purecounter"></span>
-                <p>Projects</p>
+                <p>Buku</p>
               </div>
             </div>
           </div>
@@ -149,7 +147,7 @@
               <i class="bi bi-headset" style="color: #15be56;"></i>
               <div>
                 <span data-purecounter-start="0" data-purecounter-end="1463" data-purecounter-duration="1" class="purecounter"></span>
-                <p>Hours Of Support</p>
+                <p>Telephone</p>
               </div>
             </div>
           </div>
@@ -159,7 +157,7 @@
               <i class="bi bi-people" style="color: #bb0852;"></i>
               <div>
                 <span data-purecounter-start="0" data-purecounter-end="15" data-purecounter-duration="1" class="purecounter"></span>
-                <p>Hard Workers</p>
+                <p>Pegawai</p>
               </div>
             </div>
           </div>
@@ -176,7 +174,7 @@
 
         <header class="section-header">
           <h2>Features</h2>
-          <p>Laboriosam et omnis fuga quis dolor direda fara</p>
+          <p>Sistem Informasi Perpustakaan SMKN 1 ....</p>
         </header>
 
         <div class="row">
@@ -191,42 +189,42 @@
               <div class="col-md-6" data-aos="zoom-out" data-aos-delay="200">
                 <div class="feature-box d-flex align-items-center">
                   <i class="bi bi-check"></i>
-                  <h3>Eos aspernatur rem</h3>
+                  <h3>Katalog Buku</h3>
                 </div>
               </div>
 
               <div class="col-md-6" data-aos="zoom-out" data-aos-delay="300">
                 <div class="feature-box d-flex align-items-center">
                   <i class="bi bi-check"></i>
-                  <h3>Facilis neque ipsa</h3>
+                  <h3>Manajemen Anggota</h3>
                 </div>
               </div>
 
               <div class="col-md-6" data-aos="zoom-out" data-aos-delay="400">
                 <div class="feature-box d-flex align-items-center">
                   <i class="bi bi-check"></i>
-                  <h3>Volup amet voluptas</h3>
+                  <h3>Manajemen Denda</h3>
                 </div>
               </div>
 
               <div class="col-md-6" data-aos="zoom-out" data-aos-delay="500">
                 <div class="feature-box d-flex align-items-center">
                   <i class="bi bi-check"></i>
-                  <h3>Rerum omnis sint</h3>
+                  <h3>Laporan</h3>
                 </div>
               </div>
 
               <div class="col-md-6" data-aos="zoom-out" data-aos-delay="600">
                 <div class="feature-box d-flex align-items-center">
                   <i class="bi bi-check"></i>
-                  <h3>Alias possimus</h3>
+                  <h3>Statistik</h3>
                 </div>
               </div>
 
               <div class="col-md-6" data-aos="zoom-out" data-aos-delay="700">
                 <div class="feature-box d-flex align-items-center">
                   <i class="bi bi-check"></i>
-                  <h3>Repellendus mollitia</h3>
+                  <h3>Reservasi Buku Online</h3>
                 </div>
               </div>
 
@@ -246,7 +244,7 @@
 
         <header class="section-header">
           <h2>Services</h2>
-          <p>Veritatis et dolores facere numquam et praesentium</p>
+          <p>Sistem Informasi Perpustakaan SMKN 1 ....</p>
         </header>
 
         <div class="row gy-4">
@@ -254,8 +252,8 @@
           <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="200">
             <div class="service-box blue">
               <i class="ri-discuss-line icon"></i>
-              <h3>Nesciunt Mete</h3>
-              <p>Provident nihil minus qui consequatur non omnis maiores. Eos accusantium minus dolores iure perferendis tempore et consequatur.</p>
+              <h3>Layanan Referensi</h3>
+              <p>Membantu siswa dalam mencari dan menggunakan sumber daya perpustakaan, termasuk database dan koleksi digital.</p>
               <a href="#" class="read-more"><span>Read More</span> <i class="bi bi-arrow-right"></i></a>
             </div>
           </div>
@@ -263,8 +261,8 @@
           <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="300">
             <div class="service-box orange">
               <i class="ri-discuss-line icon"></i>
-              <h3>Eosle Commodi</h3>
-              <p>Ut autem aut autem non a. Sint sint sit facilis nam iusto sint. Libero corrupti neque eum hic non ut nesciunt dolorem.</p>
+              <h3>Layanan Sirkulasi</h3>
+              <p>Mengelola peminjaman dan pengembalian buku perpustakaan.</p>
               <a href="#" class="read-more"><span>Read More</span> <i class="bi bi-arrow-right"></i></a>
             </div>
           </div>
@@ -272,8 +270,8 @@
           <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="400">
             <div class="service-box green">
               <i class="ri-discuss-line icon"></i>
-              <h3>Ledo Markt</h3>
-              <p>Ut excepturi voluptatem nisi sed. Quidem fuga consequatur. Minus ea aut. Vel qui id voluptas adipisci eos earum corrupti.</p>
+              <h3>Layanan Bantuan Penelitian</h3>
+              <p>Membantu siswa dalam penelitian mereka, termasuk mencari literatur relevan dan menggunakan teknik penelitian yang tepat.</p>
               <a href="#" class="read-more"><span>Read More</span> <i class="bi bi-arrow-right"></i></a>
             </div>
           </div>
@@ -281,8 +279,8 @@
           <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="500">
             <div class="service-box red">
               <i class="ri-discuss-line icon"></i>
-              <h3>Asperiores Commodi</h3>
-              <p>Non et temporibus minus omnis sed dolor esse consequatur. Cupiditate sed error ea fuga sit provident adipisci neque.</p>
+              <h3>Layanan Listerasi Informasi</h3>
+              <p>Menyediakan pelatihan dan bimbingan tentang cara mencari, menggunakan, dan mengevaluasi informasi.</p>
               <a href="#" class="read-more"><span>Read More</span> <i class="bi bi-arrow-right"></i></a>
             </div>
           </div>
@@ -290,21 +288,12 @@
           <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="600">
             <div class="service-box purple">
               <i class="ri-discuss-line icon"></i>
-              <h3>Velit Doloremque.</h3>
-              <p>Cumque et suscipit saepe. Est maiores autem enim facilis ut aut ipsam corporis aut. Sed animi at autem alias eius labore.</p>
+              <h3>Layanan Ruang Baca</h3>
+              <p>Menyediakan ruang yang nyaman dan tenang untuk belajar dan membaca.</p>
               <a href="#" class="read-more"><span>Read More</span> <i class="bi bi-arrow-right"></i></a>
             </div>
           </div>
-
-          <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="700">
-            <div class="service-box pink">
-              <i class="ri-discuss-line icon"></i>
-              <h3>Dolori Architecto</h3>
-              <p>Hic molestias ea quibusdam eos. Fugiat enim doloremque aut neque non et debitis iure. Corrupti recusandae ducimus enim.</p>
-              <a href="#" class="read-more"><span>Read More</span> <i class="bi bi-arrow-right"></i></a>
-            </div>
-          </div>
-
+          
         </div>
 
       </div>
