@@ -11,10 +11,13 @@ use Illuminate\Support\Facades\Validator;
 class SesiController extends Controller
 {
     public function index(){
+        return view('index');
+    }
+    public function login(){
         return view('login');
     }
 
-    public function login(Request $request){
+    public function loginProses(Request $request){
         $request->validate([
             'username' => 'required',
             'password' => 'required'

@@ -17,16 +17,11 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
-Route::get('index', function(){
-    return view('index');
-});
-
 Route::middleware(['guest'])->group(function () {
-    Route::get('/', [SesiController::class, 'index'])->name('login');
-    Route::post('/', [SesiController::class, 'login']);
-    Route::get('registrasi', function(){
-        return view('register');
-    })->name('register');
+    Route::get('/', [SesiController::class, 'index']);
+    Route::get('/login', [SesiController::class, 'login'])->name('login');
+    Route::post('/login', [SesiController::class, 'loginProses']);
+    Route::get('registrasi', function(){ return view('register');})->name('register');
     Route::post('registrasi-akun', [SesiController::class, 'registrasi']);
 });
 
