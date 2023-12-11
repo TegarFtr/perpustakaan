@@ -34,7 +34,7 @@ class SesiController extends Controller
         if (Auth::attempt($infoLogin)) {
             return redirect('dashboard');
         }else {
-            return redirect('')->withErrors('Username atau Password tidak sesuai.')->withInput();
+            return redirect('login')->withErrors('Username atau Password tidak sesuai.')->withInput();
         }
     }
 
