@@ -11,10 +11,13 @@ use Illuminate\Support\Facades\Validator;
 class SesiController extends Controller
 {
     public function index(){
+        return view('index');
+    }
+    public function login(){
         return view('login');
     }
 
-    public function login(Request $request){
+    public function loginProses(Request $request){
         $request->validate([
             'username' => 'required',
             'password' => 'required'
@@ -31,7 +34,7 @@ class SesiController extends Controller
         if (Auth::attempt($infoLogin)) {
             return redirect('dashboard');
         }else {
-            return redirect('')->withErrors('Username atau Password tidak sesuai.')->withInput();
+            return redirect('login')->withErrors('Username atau Password tidak sesuai.')->withInput();
         }
     }
 
