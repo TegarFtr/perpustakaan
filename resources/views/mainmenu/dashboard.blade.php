@@ -23,7 +23,7 @@
             </small>
         </h1>
     </section>
-
+    
     @if(in_array($userRole, ['admin', 'petugas']))
     <!-- Main content -->
     <section class="content">

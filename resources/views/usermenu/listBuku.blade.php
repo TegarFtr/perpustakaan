@@ -59,7 +59,7 @@
                                     <div class="modal-dialog position-absolute top-50 start-50 translate-middle">
                                         <div class="modal-content">
                                             <div class="modal-header">
-                                                <h1 class="modal-title fs-5" id="staticBackdropLabel">Form Data Anggota</h1>
+                                                <h1 class="modal-title fs-5" id="staticBackdropLabel">Form Data Peminjaman  </h1>
                                             </div>
                                             <form action="{{ route('peminjaman.store') }}" method="post">
                                                 @csrf

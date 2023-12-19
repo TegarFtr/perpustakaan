@@ -23,7 +23,13 @@
             </small>
         </h1>
     </section>
-
+    <div class="container-fluid">
+        @if(session('success'))
+            <div class="alert alert-success">
+                {{ session('success') }}
+            </div>
+        @endif
+    </div>
     <!-- Main content -->
     <section class="content">
         <div class="row">
@@ -39,7 +45,7 @@
                         <div class="card-body">
                             <input name="id_identitas" type="hidden" value="1">
                             <div class="form-group">
-                                <label for="nameApp">Nama Applikasi</label>
+                                <label for="nameApp">Nama Sekolah</label>
                                 <input type="text" class="form-control" id="nameApp" value="{{ $data->first()->nama }}" name="nama" required>
                             </div>
                             <div class="form-group">
@@ -75,7 +81,7 @@
                         <!-- Animasi -->
                         <!--<lottie-player src="../../assets/json/3151-books.json" background="transparent" speed="1" style="width: 125px; height: 125px; display: block; margin-left: auto; margin-right: auto; margin-top: -50px; margin-bottom: 15px;" loop autoplay></lottie-player>
                         -->
-                        <p style="font-weight: bold;">Nama Applikasi : {{ $data->first()->nama }}</p>
+                        <p style="font-weight: bold;">Nama Sekolah : {{ $data->first()->nama }}</p>
                         <p style="font-weight: bold;">Alamat : {{ $data->first()->alamat }}</p>
                         <p style="font-weight: bold;">Email : {{ $data->first()->email }}</p>
                         <p style="font-weight: bold;">Nomor Telepon : {{ $data->first()->telepon }}</p>

@@ -64,7 +64,7 @@ class SesiController extends Controller
         User::create($data);
 
         // Redirect with a success message
-        return redirect()->route('anggota.index')->with('success', 'Anggota successfully added!');
+        return redirect()->route('login')->with('success', 'Registrasi Berhasil!');
     }
 
     public function logout(){

@@ -51,7 +51,7 @@ class PenerbitController extends Controller
         Penerbit::create($data);
 
         // Redirect with a success message
-        return redirect()->route('penerbit.index')->with('success', 'Penerbit successfully added!');
+        return redirect()->route('penerbit.index')->with('success', 'Penerbit berhasil ditambahkan!');
     }
 
     /**
@@ -84,7 +84,7 @@ class PenerbitController extends Controller
 
         Penerbit::whereId($id)->update($data);
 
-        return redirect()->route('penerbit.index');
+        return redirect()->route('penerbit.index')->with('success', 'Penerbit berhasil diperbarui!');
     }
 
     /**
@@ -98,6 +98,6 @@ class PenerbitController extends Controller
             $data->delete();
         }
 
-        return redirect()->route('penerbit.index');
+        return redirect()->route('penerbit.index')->with('success', 'Penerbit berhasil dihapus!');
     }
 }

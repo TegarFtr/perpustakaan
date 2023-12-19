@@ -23,6 +23,13 @@
             </small>
         </h1>
     </section>
+    <div class="container-fluid">
+        @if(session('success'))
+            <div class="alert alert-success">
+                {{ session('success') }}
+            </div>
+        @endif
+    </div>
     <div class="container-fluid ">
         <div class="row">
           <div class="col-12">

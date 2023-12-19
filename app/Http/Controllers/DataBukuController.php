@@ -41,6 +41,7 @@ class DataBukuController extends Controller
      */
     public function store(Request $request)
     {
+        dd($request->all());
         $validator = Validator::make($request->all(), [
             'judul' => 'required|min:5',
             'pengarang' => 'required|min:2',
@@ -83,7 +84,7 @@ class DataBukuController extends Controller
         Buku::create($requestData);
 
         // Redirect with a success message
-        return redirect()->route('data-buku.index')->with('success', 'Buku successfully added!');
+        return redirect()->route('data-buku.index')->with('success', 'Buku berhasil ditambahkan!');
     }
 
 
@@ -152,7 +153,7 @@ class DataBukuController extends Controller
         }
 
         // Redirect with a success message
-        return redirect()->route('data-buku.index')->with('success', 'Buku successfully updated!');
+        return redirect()->route('data-buku.index')->with('success', 'Buku berhasil diperbarui!');
     }
 
 
@@ -174,6 +175,6 @@ class DataBukuController extends Controller
         $post->delete();
 
         //redirect to index
-        return redirect()->route('data-buku.index')->with(['success' => 'Data Berhasil Dihapus!']);
+        return redirect()->route('data-buku.index')->with(['success' => 'Buku berhasil dihapus!']);
     }
 }

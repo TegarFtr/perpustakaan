@@ -19,7 +19,7 @@ class DataAnggotaController extends Controller
         $data = $query
             ? User::where('nama', 'LIKE', "%$query%")->get()
             : User::get();
-        return view('mainmenu.masterdata.anggota', compact('data', 'userRole'));
+        return view('mainmenu.masterdata.anggota', compact('data', 'userRole', 'anggota'));
     }
 
     /**
@@ -58,7 +58,7 @@ class DataAnggotaController extends Controller
         User::create($data);
 
         // Redirect with a success message
-        return redirect()->route('anggota.index')->with('success', 'Anggota successfully added!');
+        return redirect()->route('anggota.index')->with('success', 'Anggota berhasil ditambahkan!');
     }
 
     /**
@@ -98,7 +98,7 @@ class DataAnggotaController extends Controller
 
         User::whereId($id)->update($data);
 
-        return redirect()->route('anggota.index');
+        return redirect()->route('anggota.index')->with('success', 'Anggota berhasil diperbarui!');
     }
 
     /**
@@ -112,6 +112,6 @@ class DataAnggotaController extends Controller
             $data->delete();
         }
 
-        return redirect()->route('anggota.index');
+        return redirect()->route('anggota.index')->with('success', 'Anggota berhasil dihapus!');
     }
 }

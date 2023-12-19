@@ -85,8 +85,7 @@
             .:: Laporan Perpustakaan ::.
         </h3>
         <p style="font-size: 12px" class="text-center">
-            Jl. P. Sudirman No.24, Puri, Plangitan, Kec. Pati, Kabupaten Pati,
-            Jawa Tengah<br />
+            Jl. Laksamana Martadinata No.84, Sukoharjo, Kec. Klojen, Kota Malang, Jawa Timur 65118<br />
             Email : perpussmanpati@e-perpus.com | Nomor Telpon : 6281221545666
         </p>
         <hr />

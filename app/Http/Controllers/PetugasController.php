@@ -54,7 +54,7 @@ class PetugasController extends Controller
         User::create($data);
 
         // Redirect with a success message
-        return redirect()->route('petugas.index')->with('success', 'Anggota successfully added!');
+        return redirect()->route('petugas.index')->with('success', 'Petugas berhasil ditambahkan!');
     }
 
     /**
@@ -94,7 +94,7 @@ class PetugasController extends Controller
 
         User::whereId($id)->update($data);
 
-        return redirect()->route('petugas.index');
+        return redirect()->route('petugas.index')->with('success', 'Petugas berhasil diperbarui!');
     }
 
     /**
@@ -108,6 +108,6 @@ class PetugasController extends Controller
             $data->delete();
         }
 
-        return redirect()->route('petugas.index');
+        return redirect()->route('petugas.index')->with('success', 'Petugas berhasil dihapus!');
     }
 }

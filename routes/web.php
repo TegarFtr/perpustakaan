@@ -82,6 +82,8 @@ Route::middleware(['guest'])->group(function () {
             return view('usermenu.kembali', compact('data', 'buku', 'userRole'));
         });
         Route::resource('list-buku', ListBukuController::class);
-        Route::post('/list-buku/save-to-session', 'ListBukuController@saveToSession')->name('list-buku.save-to-session')->middleware('web');
+        Route::post('/list-buku/save-to-session', 'ListBukuController@saveToSession')
+        ->name('list-buku.save-to-session')
+        ->middleware('web');
 
     });

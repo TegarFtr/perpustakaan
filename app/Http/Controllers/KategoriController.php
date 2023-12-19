@@ -51,7 +51,7 @@ class KategoriController extends Controller
         Kategori::create($data);
 
         // Redirect with a success message
-        return redirect()->route('kategori.index')->with('success', 'Kategori successfully added!');
+        return redirect()->route('kategori.index')->with('success', 'Kategori berhasil ditambahkan!');
 
     }
 
@@ -85,7 +85,7 @@ class KategoriController extends Controller
 
         Kategori::whereId($id)->update($data);
 
-        return redirect()->route('kategori.index');
+        return redirect()->route('kategori.index')->with('success', 'Kategori berhasil diperbarui!');
     }
 
     /**
@@ -99,6 +99,6 @@ class KategoriController extends Controller
             $data->delete();
         }
 
-        return redirect()->route('kategori');
+        return redirect()->route('kategori')->with('success', 'Kategori berhasil dihapus!');
     }
 }

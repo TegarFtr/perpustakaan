@@ -70,7 +70,7 @@ class ProfileController extends Controller
 
         Profile::whereId($id)->update($data);
 
-        return redirect()->route('profile.index');
+        return redirect()->route('profile.index')->with('success', 'Profil berhasil diperbarui!');
     }
 
     /**
